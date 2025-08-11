@@ -1,0 +1,142 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <BaseHead
+      title="Agendar Asesoría Jurídica"
+      description="Completa el formulario para recibir atención personalizada"
+    />
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <h1>Agendar Asesoría Jurídica</h1>
+
+      <form id="formulario">
+        <label>Nombres completos:</label>
+        <input type="text" name="nombres" required />
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" required />
+
+        <label>Número de teléfono:</label>
+        <input type="tel" name="numero" required />
+
+        <label>Fecha deseada:</label>
+        <input type="date" name="fecha" id="fecha" required />
+
+        <label>Especialidad:</label>
+        <select name="especialidad" required>
+          <option value="">-- Selecciona --</option>
+          <option value="civil">Derecho de Familia</option>
+          <option value="penal">Contravenciones y Procesos Penales</option>
+          <option value="laboral">Defensa en Violencia Intrafamiliar</option>
+          <option value="familia">Redacción de Contratos y Escrituras</option>
+          <option value="empresarial">Otro</option>
+        </select>
+
+        <label>Descripción del caso:</label>
+        <textarea name="descripcion" rows="6" required></textarea>
+
+        <button type="submit">Enviar Solicitud</button>
+      </form>
+    </main>
+
+    <Footer />
+
+    <script type="module">
+      import emailjs from "https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js";
+      emailjs.init("TU_PUBLIC_KEY");
+
+      const fechasOcupadas = ["2025-08-10", "2025-08-15"];
+      document.getElementById("fecha").addEventListener("input", (e) => {
+        if (fechasOcupadas.includes(e.target.value)) {
+          alert("Esa fecha ya no está disponible.");
+          e.target.value = "";
+        }
+      });
+
+      document
+        .getElementById("formulario")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          emailjs
+            .sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this)
+            .then(() => {
+              alert("Mensaje enviado correctamente 🎉");
+              this.reset();
+            })
+            .catch((err) => {
+              alert("Hubo un error al enviar 😞: " + JSON.stringify(err));
+            });
+        });
+    </script>
+    <style>
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2em 1em;
+        font-family: system-ui, sans-serif;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.5em;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 1em 0.5em;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #20d362;
+      }
+
+      @media (max-width: 600px) {
+        form {
+          width: 90%;
+        }
+      }
+    </style>
+  </body>
+</html>
