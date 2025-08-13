@@ -3,14 +3,15 @@ export const SITE_DESCRIPTION = 'Welcome to my website!';
 
 import { defineCollection, z } from "astro:content";
 
-const blog = defineCollection({
+const services = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
-    description: z.string().optional(),
+    description: z.string(),
   }),
 });
 
 export const collections = {
-  blog,
+  services,
 };

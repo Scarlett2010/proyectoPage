@@ -3,10 +3,20 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE } from "../consts";
-import { getCollection, type CollectionEntry } from "astro:content";
 
-const servicios: CollectionEntry<"services">[] =
-  await getCollection("services");
+// Importa todos los .md como módulos
+const serviciosImport = import.meta.glob("../content/services/*.md", {
+  eager: true,
+});
+
+// Convierte a array con slug, frontmatter y Content renderizable
+const servicios = Object.entries(serviciosImport).map(([path, module]) => {
+  return {
+    slug: path.split("/").pop().replace(/\.md$/, ""),
+    frontmatter: module.frontmatter,
+    Content: module.Content,
+  };
+});
 ---
 
 <!doctype html>
@@ -20,22 +30,18 @@ const servicios: CollectionEntry<"services">[] =
   <body>
     <Header />
     <main style="max-width: 900px; margin: auto; padding: 2rem;">
-      <h2>Sobre mí</h2>
-      <p>
-        Soy Jorge Oña, abogado con sólida experiencia en distintas áreas del
-        derecho.<br />
-        Me comprometo con cada cliente, ofreciendo trato personalizado, ética y dedicación.<br
-        />
-        Estos son los servicios legales que trato como especialidad:
-      </p>
+      <h2>Mis servicios legales</h2>
+      <p>Especialidades tratadas con experiencia y dedicación</p>
 
       <section class="cards-container">
         {
           servicios.map((servicio) => (
-            <div class="card" key={servicio.id}>
+            <div class="card" key={servicio.slug}>
               <div class="card-icon">⚖️</div>
-              <h5>{servicio.data.title}</h5>
-              <p>{servicio.data.description}</p>
+              <h3>{servicio.frontmatter.title}</h3>
+              <div class="contenido">
+                <servicio.Content />
+              </div>
             </div>
           ))
         }
@@ -47,9 +53,10 @@ const servicios: CollectionEntry<"services">[] =
       .cards-container {
         display: grid;
         gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr;
         margin-top: 1.5rem;
       }
+
       .card {
         background-color: #e3ecff;
         border-radius: 15px;
@@ -57,29 +64,32 @@ const servicios: CollectionEntry<"services">[] =
         box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
         border: 1px solid #a4c1ff;
         color: #0041c4;
-        text-decoration: none;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        transition:
-          box-shadow 0.3s ease,
-          transform 0.25s ease;
       }
-      .card:hover {
-        box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
-        transform: translateY(-4px);
-      }
-      .card h5 {
+
+      .card h3 {
         margin: 0 0 0.7rem 0;
         font-weight: 700;
         font-size: 1.3rem;
       }
-      .card p {
-        margin: 0;
+
+      .contenido {
+        margin-top: 0.8rem;
+        line-height: 1.6;
         font-size: 1rem;
-        opacity: 0.8;
+        color: #223355;
       }
+
+      .contenido p {
+        margin-bottom: 0.7rem;
+      }
+
+      .contenido ul {
+        margin: 1em 0 1em 1.5em;
+        list-style-type: disc;
+      }
+
       .card-icon {
         align-self: flex-end;
         width: 30px;
