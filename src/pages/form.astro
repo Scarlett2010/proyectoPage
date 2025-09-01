@@ -17,7 +17,7 @@ import email from "../assets/email.png";
   <body>
     <Header />
 
-    <main>
+    <main class="form">
       <h1>Contacto</h1>
       <p class="subtitulo">
         Completa el formulario para solicitar una consulta legal personalizada
@@ -34,9 +34,18 @@ import email from "../assets/email.png";
             />
           </div>
           <div class="form-group">
+            <label>Correo *</label>
+            <input
+              type="text"
+              name="correo"
+              placeholder="ejemplo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="form-group">
             <label>Número de celular *</label>
             <input
-              type="tel"
+              type="number"
               name="numero"
               placeholder="+593 99 123 4567"
               required
@@ -48,13 +57,9 @@ import email from "../assets/email.png";
             <label>Especialidad de asesoramiento *</label>
             <select name="especialidad" required>
               <option value="">Selecciona el tipo de asesoramiento</option>
-              <option value="civil">Derecho de Familia</option>
-              <option value="penal">Contravenciones y Procesos Penales</option>
-              <option value="laboral">Defensa en Violencia Intrafamiliar</option
-              >
-              <option value="familia"
-                >Redacción de Contratos y Escrituras</option
-              >
+              <option value="civil">Derecho Procesal Penal</option>
+              <option value="penal">Derecho Constitucional</option>
+              <option value="laboral">Derecho Civil</option>
               <option value="empresarial">Otro</option>
             </select>
           </div>
@@ -127,17 +132,20 @@ import email from "../assets/email.png";
         margin: 0 auto;
         padding: 2em 1em;
         font-family: system-ui, sans-serif;
-        color: #222;
       }
-
+      .form {
+        background-color: rgb(221, 238, 248);
+        width: 100%;
+      }
       h1 {
         text-align: center;
         margin-bottom: 0.3em;
+        color: #0041c4;
       }
 
       .subtitulo {
         text-align: center;
-        color: #666;
+        color: #121111;
         margin-bottom: 1.5em;
         font-size: 1.1em;
       }
@@ -170,7 +178,7 @@ import email from "../assets/email.png";
       label {
         font-weight: 500;
         margin-bottom: 0.4em;
-        color: #222;
+        color: #6595f6;
       }
 
       input,
@@ -179,12 +187,18 @@ import email from "../assets/email.png";
         width: 100%;
         padding: 0.7em;
         font-size: 1em;
-        border: 1px solid #d1d5db;
+        border: 1px solid #b5b6b9;
         border-radius: 7px;
         box-sizing: border-box;
         background: #f7f8fa;
         margin-bottom: 0.2em;
         transition: border-color 0.2s;
+        color: #bec0c2;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #b5b6b9;
       }
 
       input:focus,
@@ -199,7 +213,7 @@ import email from "../assets/email.png";
       }
 
       button[type="submit"] {
-        background-color: #1769ff;
+        background-color: #d97706;
         color: white;
         padding: 1em 0.5em;
         border: none;

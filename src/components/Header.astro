@@ -1,5 +1,4 @@
 ---
-import scale from "../assets/scale.png";
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
@@ -7,7 +6,7 @@ import HeaderLink from "./HeaderLink.astro";
 <header>
   <nav>
     <div class="informacion">
-      <img src="/src/assets/scale.png" alt="Ícono" />
+      <img src="/public/favicon.svg" alt="Ícono" />
       <h2><a href="/">{SITE_TITLE}</a></h2>
     </div>
     <div class="internal-links">
@@ -30,18 +29,23 @@ import HeaderLink from "./HeaderLink.astro";
     gap: 0.5em;
   }
   .informacion img {
-    width: 24px;
-    height: 24px;
+    width: 45px;
+    height: 45px;
     object-fit: contain;
   }
   h2 {
+    margin: 1;
+    font-size: 1.2em;
     margin: 0;
-    font-size: 1em;
+    color: #28557f;
   }
-
   h2 a,
   h2 a.active {
     text-decoration: none;
+  }
+  .internal-links a {
+    color: #2b5e8d;
+    font-weight: bold;
   }
   nav {
     display: flex;
@@ -56,8 +60,13 @@ import HeaderLink from "./HeaderLink.astro";
   }
   nav a.active {
     text-decoration: none;
-    color: blue;
-    border-bottom-color: var(--accent);
+    color: #d97706;
+    border-bottom-color: color var(--accent);
     font-weight: normal;
+  }
+  .internal-links {
+    display: flex;
+    gap: 1em;
+    font-size: 1em;
   }
 </style>

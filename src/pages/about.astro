@@ -28,10 +28,22 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
   </head>
   <body>
     <Header />
-    <main style="max-width: 900px; margin: auto; padding: 2rem;">
-      <h2>Mis servicios legales</h2>
-      <p>Especialidades tratadas con experiencia y dedicación</p>
-
+    <main
+      class="principal"
+      style="max-width: 900px; margin: auto; padding: 2rem;"
+    >
+      <h2>Servicios legales</h2>
+      <p>
+        Nuestrocompromiso es brindar asesoría legal experta utilizando todas las
+        herramientas del ordenamiento jurídico ecuatoriano para garantizar una
+        defensa sólida y efectiva en cada procedimiento.
+      </p>
+      <img
+        class="perfil"
+        src="/src/assets/scale.png"
+        alt="Perfil de abogado"
+        style="width: 220px; display: block; margin: 2rem auto;"
+      />
       <section class="cards-container">
         {
           servicios.map((servicio) => (
@@ -46,63 +58,120 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
         }
       </section>
     </main>
-    <Footer />
+    <main class="second">
+      <h4>¿Por qué elegir mi representación legal?</h4>
+      <p>
+        - Experiencia especializada en derecho penal, procesal penal y civil.
+      </p>
+      <p>
+        - Defensa personalizada adaptada a las particularidades de cada caso.
+      </p>
+      <p>
+        - Acompañamiento integral desde la investigación hasta la ejecución de
+        sentencias
+      </p>
+      <p>
+        - Compromiso con la justicia y la protección de los derechos de mis
+        clientes.
+      </p>
+    </main>
+  </body><Footer />
 
-    <style>
-      .cards-container {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: 1fr;
-        margin-top: 1.5rem;
-      }
-
-      .card {
-        background-color: #e3ecff;
-        border-radius: 15px;
-        padding: 2rem 1.5rem;
-        box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-        border: 1px solid #a4c1ff;
-        color: #0041c4;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .card h3 {
-        margin: 0 0 0.7rem 0;
-        font-weight: 700;
-        font-size: 1.3rem;
-      }
-
-      .contenido {
-        margin-top: 0.8rem;
-        line-height: 1.6;
-        font-size: 1rem;
-        color: #223355;
-      }
-
-      .contenido p {
-        margin-bottom: 0.7rem;
-      }
-
-      .contenido ul {
-        margin: 1em 0 1em 1.5em;
-        list-style-type: disc;
-      }
-
-      .card-icon {
-        align-self: flex-end;
-        width: 30px;
-        height: 30px;
-        background-color: #80aaff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.2rem;
-      }
-    </style>
-  </body>
+  <style>
+    .principal {
+      font-family: Arial, sans-serif;
+      background-color: rgb(221, 238, 248);
+      max-width: flex;
+      margin: auto;
+      padding: 1rem;
+      width: 100%;
+      margin: 4rem auto;
+    }
+    .principal h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #0041c4;
+    }
+    .principal p {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .cards-container {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      border: 1px solid #5383ea;
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3 {
+      text-align: center;
+      color: #d97706;
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin: 0 0 0.7rem 0;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #d97706;
+      padding-bottom: 0.5rem;
+    }
+    .contenido {
+      margin-top: 0.8rem;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #0041c4;
+    }
+    .contenido p {
+      margin-bottom: 0.7rem;
+    }
+    .contenido ul {
+      margin: 1em 0 1em 1.5em;
+      list-style-type: disc;
+    }
+    .card-icon {
+      align-self: flex-end;
+      width: 30px;
+      height: 30px;
+      background-color: #80aaff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .second {
+      background: #f5f7fa;
+      border-radius: 0;
+      border-top: 1px solid #a4c1ff;
+      border-bottom: 1px solid #a4c1ff;
+      color: #0041c4;
+      margin-top: 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+    .second h4 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .second p {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </html>

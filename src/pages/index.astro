@@ -16,47 +16,49 @@ const servicios: CollectionEntry<"services">[] =
   </head>
   <body>
     <Header />
-    <main style="max-width: 900px; margin: auto; padding: 2rem;">
-      <p>Hola, mi nombre es Jorge Oña</p>
-      <h3>La justicia es la base de una sociedad próspera.</h3>
+    <main
+      style="max-width: 900px; margin: auto; padding: 2rem;"
+      class="principal"
+    >
+      <h5>Representación legal experta | Justicia y resultados garantizados</h5>
       <p>
-        Soy Jorge Oña, abogado especializado en diferentes ramas del derecho.
-        Con años de experiencia, me dedico a brindar asesoría legal integral y
-        representación jurídica de calidad.
+        Cada caso es único, cada cliente es prioritario. Ofrezco acompañamiento
+        jurídico integral desde la consulta inicial hasta la resolución
+        definitiva, defendiendo sus derechos con experiencia y dedicación
+        absoluta.
       </p>
-      <button
+      <img
+        class="perfil"
+        src="/src/assets/scale.png"
+        alt="Perfil de abogado"
+        style="width: 320px; display: block; margin: 2rem auto;"
+      />
+      <a
+        href="/form"
         style="
         padding: 0.6em 1.2em; 
         font-size: 1rem; 
         border-radius: 4px; 
         border:none; 
-        background-color: #0057b8; 
+        background-color: #D97706; 
         color: white; 
         cursor: pointer;
       "
       >
         Trabajemos juntos
-      </button>
+      </a>
 
-      <h4 style="margin-top: 3rem;">
-        Servicios tratados como una especialidad.
-      </h4>
-
-      <section
-        class="cards-container"
-        style="
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        margin-top: 1rem;
-      "
-      >
-        {
-          servicios.map((servicio) => (
-            <a
-              href={`/about?servicio=${servicio.slug}`}
-              class="card"
-              style="
+      <main class="services">
+        <h4 style="margin-top: 3rem background-color: #e3ecff;">
+          Servicios tratados como una especialidad
+        </h4>
+        <section class="cards-container">
+          {
+            servicios.map((servicio) => (
+              <a
+                href={`/about?servicio=${servicio.slug}`}
+                class="card"
+                style="
               text-decoration: none;
               border: 1px solid #ccc;
               padding: 1rem;
@@ -65,26 +67,48 @@ const servicios: CollectionEntry<"services">[] =
               transition: box-shadow 0.3s ease;
               display: block;
             "
-              key={servicio.id}
-            >
-              <div class="card-icon">⚖️</div>
-              <h5 style="margin-top: 0;">{servicio.data.title}</h5>
-              <p>{servicio.data.description}</p>
-            </a>
-          ))
-        }
-      </section>
-    </main>
+                key={servicio.id}
+              >
+                <img
+                  src={
+                    servicio.data.image ||
+                    (servicio.data.title === "Derecho Civil"
+                      ? "/src/assets/derechocivil.png"
+                      : servicio.data.title === "Derecho Constitucional"
+                        ? "/src/assets/derechoconstitucional.png"
+                        : servicio.data.title === "Derecho Procesal Penal"
+                          ? "/src/assets/derechopenal.png"
+                          : servicio.data.title === "Derecho de Familia"
+                            ? "/src/assets/derechofamilia.png"
+                            : "/src/assets/derechocivil.png")
+                  }
+                  alt={servicio.data.title}
+                  class="card-image"
+                />
+                <h5 style="margin-top: 0;">{servicio.data.title}</h5>
+                <p>{servicio.data.description}</p>
+              </a>
+            ))
+          }
+        </section>
+      </main>
 
-    <main class="second-container">
-      <h3>¿Necesitas asesoría legal?</h3>
-      <p>
-        Estoy aquí para ayudarte a navegar por el sistema legal y proteger tus
-        derechos. Ya sea que necesites asesoría, representación en litigios o
-        simplemente una consulta, no dudes en contactarme.
-      </p>
-      <button
-        style="
+      <main class="second-container">
+        <h3>¿Necesitas asesoría legal?</h3>
+        <img
+          class="isotipo"
+          src="/src/assets/isotipo.png"
+          alt="Perfil de abogado"
+          style="width: 320px; display: block; margin: 2rem auto;"
+        />
+        <p>
+          Justia con visión estrategica y compromiso ético. Contáctame y
+          descubre cómo puedo ayudarte a proteger tus derechos y alcanzar los
+          mejores resultados en tu caso.
+        </p>
+        <a
+          href="/form"
+          style="
         padding: 0.6em 1.2em; 
         font-size: 1rem; 
         border-radius: 4px; 
@@ -93,76 +117,119 @@ const servicios: CollectionEntry<"services">[] =
         color: white; 
         cursor: pointer;
       "
-      >
-        Trabajemos juntos
-      </button>
+        >
+          Trabajemos juntos
+        </a>
+      </main>
     </main>
-
     <Footer />
-
-    <style>
-      .cards-container {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        margin-top: 1.5rem;
-      }
-      .card {
-        background-color: #e3ecff;
-        border-radius: 15px;
-        padding: 2rem 1.5rem;
-        box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-        border: 1px solid #a4c1ff;
-        color: #0041c4;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        transition:
-          box-shadow 0.3s ease,
-          transform 0.25s ease;
-      }
-      .card:hover {
-        box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
-        transform: translateY(-4px);
-      }
-      .card h5 {
-        margin: 0 0 0.7rem 0;
-        font-weight: 700;
-        font-size: 1.3rem;
-      }
-      .card p {
-        margin: 0;
-        font-size: 1rem;
-        opacity: 0.8;
-      }
-      .card-icon {
-        align-self: flex-end;
-        width: 30px;
-        height: 30px;
-        background-color: #80aaff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.2rem;
-      }
-      .second-container {
-        width: 100%;
-        margin: 4rem auto;
-        padding: 2rem;
-        text-align: center;
-        background-color: #f5f5f5;
-      }
-      .second-container p {
-        font-size: 1rem;
-        margin: 1rem auto 2rem auto;
-        max-width: 600px;
-      }
-    </style>
   </body>
 </html>
+<style>
+  .principal {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    width: auto;
+    background-color: rgb(221, 238, 248);
+    font-family: Arial, sans-serif;
+  }
+  .principal h5 {
+    text-align: center;
+    color: #0041c4;
+  }
+  .principal p {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  .services {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+    margin: 4rem auto;
+    background-color: rgb(251, 251, 251);
+  }
+  .services h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #0041c4;
+  }
+  .cards-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 1.5rem;
+  }
+  .cards-container h5 {
+    text-align: center;
+    color: #d97706;
+  }
+  .cards-container p {
+    text-align: justify;
+  }
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px #abbfd2;
+    border: 1px solid #5383ea;
+    display: flex;
+    flex-direction: column;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.25s ease;
+  }
+  .card:hover {
+    box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
+    transform: translateY(-4px);
+  }
+  .card h5 {
+    margin: 0 0 0.7rem 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .card p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  .card-image {
+    width: 15%;
+    height: 30%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-radius: 15%;
+    border: 2px solid #0041c4;
+  }
+  .perfil {
+    border: #0041c4 2px solid;
+  }
+  .card-icon {
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    background-color: #80aaff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .second-container {
+    width: 100%;
+    margin-top: 0;
+    text-align: center;
+  }
+  .second-container h3 {
+    text-align: center;
+    color: #0041c4;
+  }
+  .second-container p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+</style>
