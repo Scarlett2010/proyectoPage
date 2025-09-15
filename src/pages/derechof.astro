@@ -1,0 +1,296 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE } from "../consts";
+
+// Importa todos los .md como módulos
+const serviciosImport = import.meta.glob("../content/services/derechof.md", {
+  eager: true,
+});
+
+// Convierte a array con slug, frontmatter y Content renderizable
+const servicios = Object.entries(serviciosImport).map(([path, module]) => {
+  return {
+    slug: path.split("/").pop().replace(/\.md$/, ""),
+    frontmatter: module.frontmatter,
+    Content: module.Content,
+  };
+});
+---
+
+<html lang="es">
+  <head>
+    <BaseHead
+      title={SITE_TITLE + " | Nosotros"}
+      description="Conoce a LEXLOCI Abogados y sus especialidades legales."
+    />
+  </head>
+  <body>
+    <Header />
+    <main
+      class="principal"
+      style="max-width: 900px; margin: auto; padding: 2rem;"
+    >
+      <h3>Servicios legales</h3>
+      <p>
+        Nuestro compromiso es brindar asesoría legal experta utilizando todas
+        las herramientas del ordenamiento jurídico ecuatoriano para garantizar
+        una defensa sólida y efectiva en cada procedimiento.
+      </p>
+      <img
+        class="perfil"
+        src="/src/assets/corporativa.jpg"
+        alt="Perfil de abogado"
+      />
+      <section class="cards-container">
+        {
+          servicios.map((servicio) => (
+            <div class="card" key={servicio.slug}>
+              <div class="card-icon">⚖️</div>
+              <h3>{servicio.frontmatter.title}</h3>
+              <div class="contenido">
+                <servicio.Content />
+              </div>
+            </div>
+          ))
+        }
+      </section>
+    </main>
+    <main class="second">
+      <h5>¿Por qué elegir mi representación legal?</h5>
+      <p>
+        - Experiencia especializada en derecho penal, procesal penal y civil.
+      </p>
+      <p>
+        - Defensa personalizada adaptada a las particularidades de cada caso.
+      </p>
+      <p>
+        - Acompañamiento integral desde la investigación hasta la ejecución de
+        sentencias
+      </p>
+      <p>
+        - Compromiso con la justicia y la protección de los derechos de mis
+        clientes.
+      </p>
+    </main>
+  </body><Footer />
+</html>
+<style>
+  html,
+  body {
+    background: rgb(233, 236, 249);
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .principal {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .principal h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #0041c4;
+  }
+
+  .principal p {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cards-container h3 {
+    text-align: center;
+    color: #d97706;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.7rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #d97706;
+    padding-bottom: 0.5rem;
+  }
+
+  .cards-container p,
+  .contenido p {
+    text-align: justify;
+    font-size: 0.92rem; /* Más pequeño */
+    opacity: 0.8;
+    margin-bottom: 0.7rem;
+  }
+
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px #abbfd2;
+    border: 1px solid #5383ea;
+    display: flex;
+    flex-direction: column;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.25s ease;
+    background: #fff;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
+    transform: translateY(-4px);
+  }
+
+  .card-icon {
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    background-color: #80aaff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .perfil {
+    border: #0041c4 2px solid;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+  }
+
+  .contenido {
+    margin-top: 0.8rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #0041c4;
+    text-align: justify;
+  }
+
+  .contenido ul {
+    margin: 1em 0 1em 1.5em;
+    list-style-type: disc;
+  }
+
+  .second {
+    background: #ffffff;
+    border-top: 1px solid #a4c1ff;
+    border-bottom: 1px solid #a4c1ff;
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2rem 15%;
+    box-sizing: border-box;
+  }
+
+  .second h5 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0041c4;
+  }
+
+  .second p {
+    text-align: justify;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    max-width: 600px; /* 🔹 mismo ancho que un bloque de texto legible */
+    margin-left: auto; /* 🔹 centrado */
+    margin-right: auto;
+  }
+
+  @media (max-width: 600px) {
+    .principal,
+    .second {
+      max-width: 98vw;
+      padding: 1rem 0.5rem;
+    }
+    .cards-container {
+      gap: 1rem;
+    }
+    .perfil {
+      max-width: 350px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      word-break: break-word;
+    }
+
+    .principal,
+    .second,
+    .cards-container,
+    .card {
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .card {
+      flex: 1 1 100%;
+    }
+
+    .perfil {
+      width: 95%;
+      max-width: 450px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    a {
+      font-size: 0.85rem;
+      padding: 0.4em 0.8em;
+      margin: 0.5rem auto;
+      display: inline-block;
+    }
+
+    footer,
+    .Footer {
+      margin: 0;
+      padding: 0.5rem;
+      width: 100%;
+    }
+    p,
+    h5,
+    h4,
+    h3 {
+      word-break: break-word;
+      hyphens: auto;
+    }
+  }
+</style>

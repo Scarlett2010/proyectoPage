@@ -3,175 +3,444 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE } from "../consts";
-
-// Importa todos los .md como módulos
-const serviciosImport = import.meta.glob("../content/services/*.md", {
-  eager: true,
-});
-
-// Convierte a array con slug, frontmatter y Content renderizable
-const servicios = Object.entries(serviciosImport).map(([path, module]) => {
-  return {
-    slug: path.split("/").pop().replace(/\.md$/, ""),
-    frontmatter: module.frontmatter,
-    Content: module.Content,
-  };
-});
 ---
 
 <html lang="es">
   <head>
     <BaseHead
-      title={SITE_TITLE + " | Sobre mí"}
-      description="Conoce a Jorge Oña, abogado y sus especialidades legales."
+      title={SITE_TITLE + " | Nosotros"}
+      description="Conoce a LEXLOCI Abogados y sus especialidades legales."
     />
   </head>
   <body>
     <Header />
-    <main
-      class="principal"
-      style="max-width: 900px; margin: auto; padding: 2rem;"
-    >
-      <h2>Servicios legales</h2>
-      <p>
-        Nuestrocompromiso es brindar asesoría legal experta utilizando todas las
-        herramientas del ordenamiento jurídico ecuatoriano para garantizar una
-        defensa sólida y efectiva en cada procedimiento.
-      </p>
+
+    <!-- Sección principal -->
+    <main class="principal">
+      <h2>LEXLOCI</h2>
+      <h5>
+        Con 12 años de trayectoria caminando de la mano contigo, construyendo
+        soluciones legales sólidas y apoyándote en cada etapa de tu caso.
+      </h5>
       <img
-        class="perfil"
-        src="/src/assets/scale.png"
+        class="perfil scroll-animate"
+        data-animation="slide-in-left"
+        src="/src/assets/juntoati.png"
         alt="Perfil de abogado"
-        style="width: 220px; display: block; margin: 2rem auto;"
       />
-      <section class="cards-container">
-        {
-          servicios.map((servicio) => (
-            <div class="card" key={servicio.slug}>
-              <div class="card-icon">⚖️</div>
-              <h3>{servicio.frontmatter.title}</h3>
-              <div class="contenido">
-                <servicio.Content />
-              </div>
-            </div>
-          ))
-        }
+    </main>
+
+    <main class="second">
+      <div class="second-texto">
+        <h5>NUESTRO PROPÓSITO</h5>
+        <p>
+          En Lexloci, somos un equipo jurídico dedicado a defender y proteger
+          los derechos fundamentales de todas las personas. Nuestra misión es
+          ofrecer un acompañamiento legal integral en derecho penal,
+          constitucional, civil y de familia, con profesionalismo, ética y
+          cercanía humana.
+        </p>
+        <br />
+        <p>
+          Creemos que la justicia debe ser un camino accesible y justo para cada
+          individuo, sin importar su origen o condición. Por eso, trabajamos con
+          pasión para garantizar que cada cliente reciba atención personalizada,
+          soluciones efectivas y respeto absoluto a su dignidad.
+        </p>
+      </div>
+
+      <div class="second-img">
+        <img class="logo" src="/src/assets/lexloci4.jpg" alt="Logo Lexloci" />
+      </div>
+    </main>
+
+    <!-- Sección Conócenos -->
+    <main class="conocenos">
+      <h3>NUESTRO EQUIPO</h3>
+
+      <section class="informacion">
+        <div class="info-img scroll-animate" data-animation="slide-in-left">
+          <img class="perfil-abogado" src="/src/assets/fotoportada.jpg" />
+        </div>
+        <div class="info-texto scroll-animate" data-animation="slide-in-right">
+          <h4>Dr. Jorge Oña</h4>
+          <p>
+            Abogado de los Tribunales y Juzgados de la República, por la
+            Universidad de las Américas. Máster en Derecho Penal por la
+            Universidad Andina Simón Bolívar. Especialista en Garantías
+            Jurisdiccionales y Reparación Integral por el Instituto de Altos
+            Estudios Nacionales. Especialista en Derecho Penal Económico y
+            Compliance Penal por la Universidad de Salamanca.
+          </p>
+        </div>
+      </section>
+
+      <section class="informacion">
+        <div class="info-img scroll-animate" data-animation="slide-in-left">
+          <img class="perfil-abogado" src="/src/assets/scale.png" />
+        </div>
+        <div class="info-texto scroll-animate" data-animation="slide-in-right">
+          <h4>Dr. Paúl Nágera</h4>
+          <p>
+            Especialista en Derecho Civil y de Familia, con más de 10 años de
+            experiencia en litigios y asesorías legales. Graduada de la
+            Universidad Central. Comprometida con la defensa de los derechos de
+            los más vulnerables.
+          </p>
+        </div>
+      </section>
+
+      <section class="informacion">
+        <div class="info-img scroll-animate" data-animation="slide-in-left">
+          <img class="perfil-abogado" src="/src/assets/dr.ja.jpg" />
+        </div>
+        <div class="info-texto scroll-animate" data-animation="slide-in-right">
+          <h4>Dr. Jhon Alarcón</h4>
+          <p>
+            Experto en Derecho Constitucional y Penal, con un enfoque en
+            derechos humanos. Graduado de la Universidad Andina. Ha participado
+            en múltiples casos emblemáticos a nivel nacional.
+          </p>
+        </div>
       </section>
     </main>
-    <main class="second">
-      <h4>¿Por qué elegir mi representación legal?</h4>
-      <p>
-        - Experiencia especializada en derecho penal, procesal penal y civil.
-      </p>
-      <p>
-        - Defensa personalizada adaptada a las particularidades de cada caso.
-      </p>
-      <p>
-        - Acompañamiento integral desde la investigación hasta la ejecución de
-        sentencias
-      </p>
-      <p>
-        - Compromiso con la justicia y la protección de los derechos de mis
-        clientes.
-      </p>
-    </main>
-  </body><Footer />
 
-  <style>
-    .principal {
-      font-family: Arial, sans-serif;
-      background-color: rgb(221, 238, 248);
-      max-width: flex;
-      margin: auto;
-      padding: 1rem;
-      width: 100%;
-      margin: 4rem auto;
-    }
-    .principal h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #0041c4;
-    }
-    .principal p {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .cards-container {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: 1fr;
-      margin-top: 1.5rem;
-    }
-    .card {
-      background-color: white;
-      border-radius: 15px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-      border: 1px solid #5383ea;
-      display: flex;
-      flex-direction: column;
-    }
-    .card h3 {
-      text-align: center;
-      color: #d97706;
-      font-weight: 800;
-      font-size: 1.5rem;
-      margin: 0 0 0.7rem 0;
-      font-weight: 700;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #d97706;
-      padding-bottom: 0.5rem;
-    }
-    .contenido {
-      margin-top: 0.8rem;
-      line-height: 1.6;
-      font-size: 1rem;
-      color: #0041c4;
-    }
-    .contenido p {
-      margin-bottom: 0.7rem;
-    }
-    .contenido ul {
-      margin: 1em 0 1em 1.5em;
-      list-style-type: disc;
-    }
-    .card-icon {
-      align-self: flex-end;
-      width: 30px;
-      height: 30px;
-      background-color: #80aaff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      color: white;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    .second {
-      background: #f5f7fa;
-      border-radius: 0;
-      border-top: 1px solid #a4c1ff;
-      border-bottom: 1px solid #a4c1ff;
-      color: #0041c4;
-      margin-top: 0;
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-    }
-    .second h4 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .second p {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-  </style>
+    <Footer />
+
+    <script>
+      // Intersection Observer para animaciones en scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            const animation = element.getAttribute("data-animation");
+
+            if (animation) {
+              element.classList.add(animation);
+              // Una vez que se anima, no necesitamos seguir observando
+              observer.unobserve(element);
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observar todos los elementos con la clase scroll-animate
+      document.addEventListener("DOMContentLoaded", () => {
+        const elementsToAnimate = document.querySelectorAll(".scroll-animate");
+        elementsToAnimate.forEach((el, index) => {
+          // Inicialmente ocultos
+          el.style.opacity = "0";
+
+          // Agregar delay escalonado para elementos en la misma sección
+          const section = el.closest(".informacion");
+          if (section) {
+            const elementsInSection =
+              section.querySelectorAll(".scroll-animate");
+            const elementIndex = Array.from(elementsInSection).indexOf(el);
+            el.style.animationDelay = `${elementIndex * 0.2}s`;
+          }
+
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
 </html>
+<style>
+  html,
+  body {
+    background: rgb(233, 236, 249);
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* 🔹 evita desbordes horizontales */
+  }
+
+  /* Animaciones de traslación */
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Clases para aplicar las animaciones */
+  .slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 1s ease-out forwards;
+  }
+
+  .slide-down {
+    animation: slideDown 1s ease-out forwards;
+  }
+
+  /* Elementos con scroll-animate empiezan invisibles */
+  .scroll-animate {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Primera sección */
+  .principal {
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+  }
+
+  .principal h2 {
+    margin-bottom: 1rem;
+    color: #0041c4;
+  }
+
+  .principal h5 {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .perfil {
+    border: #0041c4 2px solid;
+    max-width: 100%;
+    width: 300px;
+    height: 400px;
+    display: block;
+    margin: 2rem auto;
+    box-sizing: border-box;
+  }
+
+  /* Segunda sección */
+  .second {
+    background: #ffffff;
+    border-top: 1px solid #a4c1ff;
+    border-bottom: 1px solid #a4c1ff;
+    margin-top: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .second-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+  }
+
+  .second-texto h5 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0041c4;
+  }
+
+  .second-texto p {
+    text-align: justify;
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+
+  .second-img {
+    flex: 0 0 350px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .second-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 500px;
+    border-radius: 8px;
+  }
+
+  .logo {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Sección Conócenos */
+  .conocenos {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .conocenos h3 {
+    text-align: center;
+    color: #d97706;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .informacion {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    gap: 2rem;
+  }
+
+  .info-img {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .perfil-abogado {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 4px solid #719aec; /* 🔹 borde azul */
+    box-sizing: border-box;
+  }
+
+  .info-texto {
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  .info-texto h4 {
+    color: #0041c4;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-texto p {
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .second {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .second-texto {
+      padding: 0;
+      max-width: none;
+    }
+
+    .second h5 {
+      text-align: center;
+    }
+
+    .second-img {
+      margin-top: 1.5rem;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .second-img img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+    }
+
+    .logo {
+      max-width: 250px;
+      height: auto;
+    }
+
+    .informacion {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .info-img {
+      margin-bottom: 1rem;
+      flex: none;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .perfil-abogado {
+      width: 100%;
+      height: auto;
+    }
+
+    /* En móvil, las animaciones se simplifican */
+    .scroll-animate[data-animation="slide-in-right"] {
+      animation-name: slideUp;
+    }
+
+    .scroll-animate[data-animation="slide-in-left"] {
+      animation-name: slideUp;
+    }
+  }
+</style>

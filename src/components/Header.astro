@@ -9,23 +9,39 @@ import HeaderLink from "./HeaderLink.astro";
       <img src="/public/favicon.svg" alt="Ícono" />
       <h2><a href="/">{SITE_TITLE}</a></h2>
     </div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <svg width="30" height="28" viewBox=" 0 0 24 24" fill="none">
+        <rect y="4" width="28" height="2" rx="1" fill="#d97706"></rect>
+        <rect y="11" width="28" height="2" rx="1" fill="#d97706"></rect>
+        <rect y="18" width="28" height="2" rx="1" fill="#d97706"></rect>
+      </svg>
+    </button>
     <div class="internal-links">
       <HeaderLink href="/">Inicio</HeaderLink>
-      <HeaderLink href="/about">Sobre mi</HeaderLink>
+      <HeaderLink href="/about">Nosotros</HeaderLink>
       <HeaderLink href="/form">Contacto</HeaderLink>
     </div>
   </nav>
+
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const links = document.querySelector(".internal-links");
+    toggle.addEventListener("click", () => {
+      links.classList.toggle("visible");
+    });
+  </script>
 </header>
+
 <style>
   header {
     margin: 0;
     padding: 0 1em;
     background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
   }
   .informacion {
     display: flex;
-    align/items: center;
+    align-items: center;
     gap: 0.5em;
   }
   .informacion img {
@@ -34,9 +50,8 @@ import HeaderLink from "./HeaderLink.astro";
     object-fit: contain;
   }
   h2 {
-    margin: 1;
-    font-size: 1.2em;
     margin: 0;
+    font-size: 1.2em;
     color: #28557f;
   }
   h2 a,
@@ -46,27 +61,104 @@ import HeaderLink from "./HeaderLink.astro";
   .internal-links a {
     color: #2b5e8d;
     font-weight: bold;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
   }
   nav a {
     padding: 1em 0.5em;
-    color: var(--black);
+    color: #2b5e8d;
     border-bottom: 4px solid transparent;
     text-decoration: none;
+    border-radius: 6px;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   nav a.active {
-    text-decoration: none;
     color: #d97706;
-    border-bottom-color: color var(--accent);
+    border-bottom-color: #d97706;
     font-weight: normal;
+    background: #ffffff;
   }
   .internal-links {
     display: flex;
     gap: 1em;
     font-size: 1em;
+  }
+  .menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    border: none;
+    cursor: pointer;
+    color: #2b5e8d;
+    padding: 0.3em;
+    box-shadow: 0 2px 8px rgba(77, 141, 206, 0.08);
+    transition: background 0.2s;
+  }
+  .menu-toggle:active {
+    background: #fff; /* Mantiene fondo blanco al hacer clic */
+  }
+
+  @media (max-width: 600px) {
+    .internal-links {
+      display: none;
+      flex-direction: column;
+      gap: 1.2em;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 25vw; /* Un cuarto de la pantalla */
+      min-width: 180px;
+      max-width: 320px;
+      box-shadow: -2px 0 16px rgba(44, 62, 80, 0.18);
+      border-radius: 0 0 0 16px;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateX(100%);
+      pointer-events: none;
+      transition:
+        opacity 0.3s,
+        transform 0.3s;
+      padding-top: 4em;
+      padding-left: 2em;
+    }
+    .internal-links.visible {
+      display: flex;
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    .internal-links a {
+      padding: 1em 0.5em;
+      border-radius: 8px;
+      margin: 0.2em 0;
+      background: #f5f7fa;
+      font-size: 1.2em;
+      color: #2b5e8d;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      text-align: left;
+      transition:
+        background 0.2s,
+        color 0.2s;
+    }
+    .internal-links a:hover {
+      background: #d97706;
+      color: #fff;
+    }
+    .menu-toggle {
+      display: block;
+      background: #fff;
+      position: relative;
+      z-index: 1100;
+    }
   }
 </style>

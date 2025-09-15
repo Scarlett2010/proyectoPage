@@ -1,10 +1,10 @@
 ---
 title: "Derecho Civil"
-description: "Manejo integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales."
-image: "/src/assets/derechocivil.png"
+description: "Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales."
+image: "/src/assets/derechocivil2.jpg"
 ---
 
-Manejo integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales.
+Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales.
 
 Áreas de especialización:
 
@@ -14,4 +14,4 @@ Manejo integral de las consecuencias civiles derivadas de hechos delictivos y pr
 - Ejecución de sentencias: Recuperación efectiva de indemnizaciones y compensaciones
 - Medidas cautelares reales: Embargos y secuestros para asegurar el cumplimiento de obligaciones
 - Prescripción: Análisis de términos y plazos para acciones civiles emergentes
-- ...Personas, bienes, sucesiones de contratos.
+- Se atiendes procediminetos civiles en cuanto a personas, bienes, sucesiones de contratos.

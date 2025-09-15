@@ -1,10 +1,10 @@
 ---
 title: "Derecho de Familia"
-description: "Se ofrece asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas."
-image: "/src/assets/derechofamilia.png"
+description: "Ofrecemos asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas."
+image: "/src/assets/derechof2.jpg"
 ---
 
-Se ofrece asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas.
+Ofrecemos asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas.
 
 - Procesos de divorcio por mutuo acuerdo y contencioso.
 - Determinación y modificación de pensiones alimenticias.
