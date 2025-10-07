@@ -15,135 +15,191 @@ import { SITE_TITLE } from "../consts";
   <body>
     <Header />
 
-    <!-- Sección principal -->
-    <main class="principal">
-      <h2>LEXLOCI</h2>
-      <h5>
-        Con 12 años de trayectoria caminando de la mano contigo, construyendo
-        soluciones legales sólidas y apoyándote en cada etapa de tu caso.
-      </h5>
-      <img
-        class="perfil scroll-animate"
-        data-animation="slide-in-left"
-        src="/src/assets/juntoati.png"
-        alt="Perfil de abogado"
-      />
-    </main>
-
-    <main class="second">
-      <div class="second-texto">
-        <h5>NUESTRO PROPÓSITO</h5>
-        <p>
-          En Lexloci, somos un equipo jurídico dedicado a defender y proteger
-          los derechos fundamentales de todas las personas. Nuestra misión es
-          ofrecer un acompañamiento legal integral en derecho penal,
-          constitucional, civil y de familia, con profesionalismo, ética y
-          cercanía humana.
-        </p>
-        <br />
-        <p>
-          Creemos que la justicia debe ser un camino accesible y justo para cada
-          individuo, sin importar su origen o condición. Por eso, trabajamos con
-          pasión para garantizar que cada cliente reciba atención personalizada,
-          soluciones efectivas y respeto absoluto a su dignidad.
-        </p>
-      </div>
-
-      <div class="second-img">
-        <img class="logo" src="/src/assets/lexloci4.jpg" alt="Logo Lexloci" />
+    <!-- Hero section rediseñado con imagen a la izquierda y texto a la derecha -->
+    <main class="hero-section">
+      <div class="hero-container">
+        <!-- Agregando animación de scroll a la imagen del hero -->
+        <div class="hero-image scroll-animate" data-animation="fade-in-left">
+          <img src="/src/assets/juntoati.png" alt="Equipo Lexloci" />
+        </div>
+        <!-- Agregando animación de scroll al contenido del hero -->
+        <div class="hero-content scroll-animate" data-animation="fade-in-right">
+          <h1 class="hero-title">
+            Representación legal experta | Justicia y resultados garantizados
+          </h1>
+          <p class="hero-subtitle">
+            Con 12 años de trayectoria caminando de la mano contigo,
+            construyendo soluciones legales sólidas y apoyándote en cada etapa
+            de tu caso.
+          </p>
+          <p class="hero-description">
+            Cada caso es único, cada cliente es prioritario. Ofrecemos
+            acompañamiento jurídico integral desde la consulta inicial hasta la
+            resolución definitiva, defendiendo sus derechos con experiencia y
+            dedicación absoluta.
+          </p>
+        </div>
       </div>
     </main>
 
-    <!-- Sección Conócenos -->
-    <main class="conocenos">
-      <h3>NUESTRO EQUIPO</h3>
-
-      <section class="informacion">
-        <div class="info-img scroll-animate" data-animation="slide-in-left">
-          <img class="perfil-abogado" src="/src/assets/fotoportada.jpg" />
-        </div>
-        <div class="info-texto scroll-animate" data-animation="slide-in-right">
-          <h4>Dr. Jorge Oña</h4>
-          <p>
-            Abogado de los Tribunales y Juzgados de la República, por la
-            Universidad de las Américas. Máster en Derecho Penal por la
-            Universidad Andina Simón Bolívar. Especialista en Garantías
-            Jurisdiccionales y Reparación Integral por el Instituto de Altos
-            Estudios Nacionales. Especialista en Derecho Penal Económico y
-            Compliance Penal por la Universidad de Salamanca.
+    <!-- Sección propósito rediseñada con mejor layout -->
+    <section class="purpose-section">
+      <div class="purpose-container">
+        <!-- Agregando animación de scroll al contenido de propósito -->
+        <div
+          class="purpose-content scroll-animate"
+          data-animation="fade-in-left"
+        >
+          <h2 class="purpose-title">NUESTRO PROPÓSITO</h2>
+          <p class="purpose-text">
+            En Lexloci, somos un equipo jurídico dedicado a defender y proteger
+            los derechos fundamentales de todas las personas. Nuestra misión es
+            ofrecer un acompañamiento legal integral en derecho penal,
+            constitucional, civil y de familia, con profesionalismo, ética y
+            cercanía humana.
+          </p>
+          <p class="purpose-text">
+            Creemos que la justicia debe ser un camino accesible y justo para
+            cada individuo, sin importar su origen o condición. Por eso,
+            trabajamos con pasión para garantizar que cada cliente reciba
+            atención personalizada, soluciones efectivas y respeto absoluto a su
+            dignidad.
           </p>
         </div>
-      </section>
-
-      <section class="informacion">
-        <div class="info-img scroll-animate" data-animation="slide-in-left">
-          <img class="perfil-abogado" src="/src/assets/scale.png" />
+        <!-- Agregando animación de scroll a la imagen de propósito -->
+        <div
+          class="purpose-image scroll-animate"
+          data-animation="fade-in-right"
+        >
+          <img src="/src/assets/lexloci4.jpg" alt="Logo Lexloci" />
         </div>
-        <div class="info-texto scroll-animate" data-animation="slide-in-right">
-          <h4>Dr. Paúl Nágera</h4>
-          <p>
-            Especialista en Derecho Civil y de Familia, con más de 10 años de
-            experiencia en litigios y asesorías legales. Graduada de la
-            Universidad Central. Comprometida con la defensa de los derechos de
-            los más vulnerables.
+      </div>
+    </section>
+
+    <!-- Sección de equipo completamente rediseñada con tarjetas profesionales -->
+    <section class="team-section">
+      <h2 class="team-title">NUESTRO EQUIPO</h2>
+      <p class="team-subtitle">
+        Profesionales comprometidos con tu defensa legal
+      </p>
+
+      <div class="team-grid">
+        <div class="team-card scroll-animate" data-animation="slide-up">
+          <div class="team-image-wrapper">
+            <img
+              class="team-image"
+              src="/src/assets/fotoportada.jpg"
+              alt="Dr. Jorge Oña"
+            />
+          </div>
+          <h3 class="team-name">Dr. Jorge Oña</h3>
+          <p class="team-specialty">Derecho Penal</p>
+          <p class="team-description">
+            Abogado de libre ejercicio, especialista en Derecho Penal, con
+            amplia trayectoria en procesos judiciales a nivel nacional. Ha
+            desarrollado obras sobre desigualdad probatoria y pericial en casos
+            flagrantes, reafirmando su compromiso con la justicia y la defensa
+            técnica integral.
           </p>
         </div>
-      </section>
 
-      <section class="informacion">
-        <div class="info-img scroll-animate" data-animation="slide-in-left">
-          <img class="perfil-abogado" src="/src/assets/dr.ja.jpg" />
-        </div>
-        <div class="info-texto scroll-animate" data-animation="slide-in-right">
-          <h4>Dr. Jhon Alarcón</h4>
-          <p>
-            Experto en Derecho Constitucional y Penal, con un enfoque en
-            derechos humanos. Graduado de la Universidad Andina. Ha participado
-            en múltiples casos emblemáticos a nivel nacional.
+        <div class="team-card scroll-animate" data-animation="slide-up">
+          <div class="team-image-wrapper">
+            <img
+              class="team-image"
+              src="/src/assets/dr-pn.jpg"
+              alt="Dr. Paúl Nágera"
+            />
+          </div>
+          <h3 class="team-name">Dr. Paúl Nágera</h3>
+          <p class="team-specialty">Derecho Constitucional y de Familia</p>
+          <p class="team-description">
+            Abogado de libre ejercicio, con sólida experiencia en Derecho
+            Laboral. Su práctica profesional se centra en la protección de los
+            derechos de los trabajadores y en la asesoría legal preventiva para
+            empleadores y colaboradores.
           </p>
         </div>
-      </section>
-    </main>
+
+        <div class="team-card scroll-animate" data-animation="slide-up">
+          <div class="team-image-wrapper">
+            <img
+              class="team-image"
+              src="/src/assets/dr-ja.jpg"
+              alt="Dr. Jhon Alarcón"
+            />
+          </div>
+          <h3 class="team-name">Dr. Jhon Alarcón</h3>
+          <p class="team-specialty">Derecho Civil</p>
+          <p class="team-description">
+            Abogado de libre ejercicio, especializado en Derecho Civil, con
+            reconocida trayectoria en litigios y asesorías en materia
+            contractual, patrimonial y de responsabilidad civil. Comprometido
+            con brindar soluciones legales efectivas y éticas.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <Footer />
+
+    <!-- Added floating WhatsApp button -->
+    <a
+      href="https://wa.me/593983844657"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float"
+      aria-label="Contactar por WhatsApp"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="whatsapp-icon"
+      >
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        ></path>
+      </svg>
+    </a>
 
     <script>
       // Intersection Observer para animaciones en scroll
       const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target;
-            const animation = element.getAttribute("data-animation");
+          const element = entry.target;
+          const animation = element.getAttribute("data-animation");
 
+          if (entry.isIntersecting) {
+            // Elemento entra en viewport - activar animación
             if (animation) {
               element.classList.add(animation);
-              // Una vez que se anima, no necesitamos seguir observando
-              observer.unobserve(element);
+              element.style.opacity = "1";
+              element.style.transform = "translateY(0)";
+            }
+          } else {
+            // Elemento sale del viewport - resetear animación
+            if (animation) {
+              element.classList.remove(animation);
+              element.style.opacity = "0";
+              element.style.transform = "translateY(30px)";
             }
           }
         });
       }, observerOptions);
 
-      // Observar todos los elementos con la clase scroll-animate
       document.addEventListener("DOMContentLoaded", () => {
         const elementsToAnimate = document.querySelectorAll(".scroll-animate");
         elementsToAnimate.forEach((el, index) => {
-          // Inicialmente ocultos
           el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
 
-          // Agregar delay escalonado para elementos en la misma sección
-          const section = el.closest(".informacion");
-          if (section) {
-            const elementsInSection =
-              section.querySelectorAll(".scroll-animate");
-            const elementIndex = Array.from(elementsInSection).indexOf(el);
-            el.style.animationDelay = `${elementIndex * 0.2}s`;
-          }
+          el.style.transitionDelay = `${index * 0.15}s`;
 
           observer.observe(el);
         });
@@ -151,296 +207,428 @@ import { SITE_TITLE } from "../consts";
     </script>
   </body>
 </html>
+
 <style>
   html,
   body {
-    background: rgb(233, 236, 249);
+    background: #f8fafc;
     margin: 0;
     width: 100%;
     max-width: 100%;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden; /* 🔹 evita desbordes horizontales */
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    overflow-x: hidden;
+    color: #1e293b;
   }
 
-  /* Animaciones de traslación */
-  @keyframes slideInLeft {
-    0% {
-      transform: translateX(-100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideInRight {
-    0% {
-      transform: translateX(100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
+  /* Animaciones mejoradas y más profesionales */
   @keyframes slideUp {
     0% {
-      transform: translateY(50px);
       opacity: 0;
+      transform: translateY(40px);
     }
     100% {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @keyframes slideDown {
+  @keyframes fadeInLeft {
     0% {
-      transform: translateY(-50px);
       opacity: 0;
+      transform: translateX(-20px);
     }
     100% {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateX(0);
     }
   }
 
-  /* Clases para aplicar las animaciones */
-  .slide-in-left {
-    animation: slideInLeft 1s ease-out forwards;
-  }
-
-  .slide-in-right {
-    animation: slideInRight 1s ease-out forwards;
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .slide-up {
-    animation: slideUp 1s ease-out forwards;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .slide-down {
-    animation: slideDown 1s ease-out forwards;
+  .fade-in-left {
+    animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Elementos con scroll-animate empiezan invisibles */
+  .fade-in-right {
+    animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
   .scroll-animate {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Primera sección */
-  .principal {
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    text-align: center;
+  /* Hero section completamente rediseñado con imagen integrada al fondo */
+  .hero-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    padding: 0;
+    min-height: 320px;
+    display: flex;
+    align-items: stretch;
     width: 100%;
-    max-width: 900px;
-    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
   }
 
-  .principal h2 {
-    margin-bottom: 1rem;
-    color: #0041c4;
-  }
-
-  .principal h5 {
-    margin-bottom: 2rem;
-    font-size: 1rem;
-  }
-
-  .perfil {
-    border: #0041c4 2px solid;
-    max-width: 100%;
-    width: 300px;
-    height: 400px;
-    display: block;
-    margin: 2rem auto;
-    box-sizing: border-box;
-  }
-
-  /* Segunda sección */
-  .second {
-    background: #ffffff;
-    border-top: 1px solid #a4c1ff;
-    border-bottom: 1px solid #a4c1ff;
-    margin-top: 0;
+  .hero-container {
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 2rem 1rem;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    min-height: 320px;
+  }
+
+  /* Imagen ocupa 45% del ancho sin padding, integrada al diseño */
+  .hero-image {
+    flex: 0 0 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1.5rem 0;
   }
 
-  .second-texto {
+  .hero-image img {
+    width: 300px;
+    height: 520px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Contenido con fondo que se integra con la imagen */
+  .hero-content {
     flex: 1;
+    padding: 2.5rem 3rem;
+    color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    max-width: 600px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    position: relative;
   }
 
-  .second-texto h5 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #0041c4;
+  .hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
-  .second-texto p {
-    text-align: justify;
-    font-size: 1rem;
-    margin: 0 auto;
-  }
-
-  .second-img {
-    flex: 0 0 350px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    box-sizing: border-box;
-  }
-
-  .second-img img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    max-height: 500px;
-    border-radius: 8px;
-  }
-
-  .logo {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  /* Sección Conócenos */
-  .conocenos {
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 1rem 2rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .conocenos h3 {
-    text-align: center;
-    color: #d97706;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-
-  .informacion {
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    align-items: flex-start;
-    box-sizing: border-box;
-    gap: 2rem;
-  }
-
-  .info-img {
-    flex: 0 0 300px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .perfil-abogado {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    object-fit: cover;
-    border: 4px solid #719aec; /* 🔹 borde azul */
-    box-sizing: border-box;
-  }
-
-  .info-texto {
-    flex: 1;
-    box-sizing: border-box;
-  }
-
-  .info-texto h4 {
-    color: #0041c4;
-    margin-bottom: 0.5rem;
-  }
-
-  .info-texto p {
-    color: #333;
+  .hero-subtitle {
+    font-size: 1.05rem;
     line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+    opacity: 0.95;
+    font-weight: 500;
+    color: #f1f5f9;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.85;
+    color: #cbd5e1;
+  }
+
+  /* Sección propósito mejorada */
+  .purpose-section {
+    background: white;
+    padding: 5rem 2rem;
+  }
+
+  .purpose-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .purpose-content {
+    flex: 1;
+  }
+
+  .purpose-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0041c4;
+    margin: 0 0 2rem 0;
+    letter-spacing: 1px;
+  }
+
+  .purpose-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
     text-align: justify;
   }
 
-  /* Responsivo */
+  .purpose-image {
+    flex: 0 0 400px;
+  }
+
+  .purpose-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Sección de equipo con animaciones profesionales y sutiles */
+  .team-section {
+    background: #f1f5fa;
+    padding: 5rem 2rem;
+  }
+
+  .team-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0041c4;
+    margin: 0 0 1rem 0;
+    letter-spacing: 1px;
+  }
+
+  .team-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #64748b;
+    margin: 0 0 4rem 0;
+  }
+
+  .team-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+  }
+
+  /* Tarjetas con animaciones más profesionales y efectos hover mejorados */
+  .team-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
+  }
+
+  .team-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(0, 65, 196, 0.2);
+    border-color: rgba(217, 119, 6, 0.3);
+  }
+
+  .team-image-wrapper {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    border: 4px solid #d97706;
+    padding: 4px;
+    background: white;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .team-card:hover .team-image-wrapper {
+    transform: scale(1.05);
+    border-color: #0041c4;
+    box-shadow: 0 8px 25px rgba(217, 119, 6, 0.3);
+  }
+
+  .team-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+  }
+
+  .team-card:hover .team-image {
+    transform: scale(1.05);
+  }
+
+  .team-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.3s ease;
+  }
+
+  .team-card:hover .team-name {
+    color: #0041c4;
+  }
+
+  .team-specialty {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #d97706;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .team-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Responsive mejorado para mantener profesionalismo en móviles */
+  @media (max-width: 968px) {
+    .hero-container {
+      min-height: 320px;
+    }
+
+    .hero-content {
+      padding: 2rem 2rem;
+    }
+
+    .hero-title {
+      font-size: 1.5rem;
+    }
+
+    .purpose-container {
+      gap: 3rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    .second {
+    .hero-section {
+      min-height: auto;
+    }
+
+    .hero-container {
       flex-direction: column;
-      text-align: center;
-      padding: 2rem 1rem;
+      min-height: auto;
     }
 
-    .second-texto {
-      padding: 0;
-      max-width: none;
-    }
-
-    .second h5 {
-      text-align: center;
-    }
-
-    .second-img {
-      margin-top: 1.5rem;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .second-img img {
-      width: 100%;
-      height: auto;
-      max-height: none;
-    }
-
-    .logo {
-      max-width: 250px;
-      height: auto;
-    }
-
-    .informacion {
-      flex-direction: column;
+    .hero-image {
+      flex: 0 0 45%;
+      display: flex;
       align-items: center;
-      text-align: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      padding: 4rem 0;
+      margin: 0 auto;
     }
 
-    .info-img {
-      margin-bottom: 1rem;
+    .hero-image img {
+      height: 520px;
+    }
+
+    .hero-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .purpose-container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .purpose-image {
       flex: none;
       width: 100%;
-      max-width: 250px;
+      max-width: 400px;
     }
 
-    .perfil-abogado {
-      width: 100%;
-      height: auto;
+    .team-title {
+      font-size: 2rem;
     }
 
-    /* En móvil, las animaciones se simplifican */
-    .scroll-animate[data-animation="slide-in-right"] {
-      animation-name: slideUp;
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .scroll-animate[data-animation="slide-in-left"] {
-      animation-name: slideUp;
+    .team-card {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  /* Centrar imagen juntoati en pantallas de 721px o menos */
+  @media (max-width: 721px) {
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 90%;
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+
+  /* Added WhatsApp floating button styles */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    background: #20ba5a;
+  }
+
+  .whatsapp-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 56px;
+      height: 56px;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .whatsapp-icon {
+      width: 28px;
+      height: 28px;
     }
   }
 </style>

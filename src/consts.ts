@@ -1,5 +1,5 @@
 export const SITE_TITLE = 'LEXLOCI ABOGADOS';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_DESCRIPTION = 'Representacion legal experta y dedicada para proteger sus derechos.';
 
 import { defineCollection, z } from "astro:content";
 

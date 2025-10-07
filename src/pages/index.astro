@@ -3,10 +3,10 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 // Cargamos todos los servicios
-let servicios: CollectionEntry<"services">[] = await getCollection("services");
+let servicios = await getCollection("services");
 
 // Orden deseado
 const orden = {
@@ -36,55 +36,35 @@ const rutas = {
   </head>
   <body>
     <Header />
+    <!-- Hero section with background image and overlay text -->
+    <div class="hero-section">
+      <div class="hero-content">
+        <h5>
+          Representación legal experta | Justicia y resultados garantizados
+        </h5>
+        <p>
+          Cada caso es único, cada cliente es prioritario. Ofrezco
+          acompañamiento jurídico integral desde la consulta inicial hasta la
+          resolución definitiva, defendiendo sus derechos con experiencia y
+          dedicación absoluta.
+        </p>
+        <a href="/about" class="hero-button"> Conoce nuestro equipo </a>
+      </div>
+    </div>
+
     <main
       style="max-width: 900px; margin: auto; padding: 2rem;"
       class="principal"
     >
-      <h5>Representación legal experta | Justicia y resultados garantizados</h5>
-      <p>
-        Cada caso es único, cada cliente es prioritario. Ofrezco acompañamiento
-        jurídico integral desde la consulta inicial hasta la resolución
-        definitiva, defendiendo sus derechos con experiencia y dedicación
-        absoluta.
-      </p>
-      <img
-        class="perfil slide-in-left"
-        src="/src/assets/dr.jo.jpg"
-        alt="Perfil de abogado"
-        style="width: 320px; display: block; margin: 2rem auto;"
-      />
-      <a
-        href="/form"
-        style="
-        padding: 0.6em 1.2em; 
-        font-size: 1rem; 
-        border-radius: 4px; 
-        border:none; 
-        background: linear-gradient(135deg, #d97706, #f59e0b);
-        color: white; 
-        cursor: pointer;
-        "
-      >
-        Trabajemos juntos
-      </a>
-
       <main class="services">
-        <h4 style="margin-top: 0">Servicios tratados como una especialidad</h4>
+        <h4 style="margin-top: 0">Esperticia Juridica</h4>
         <section class="cards-container">
           {
             servicios.map((servicio) => (
               <a
                 href={rutas[servicio.data.title] || "#"}
                 class="card"
-                style="
-                  text-decoration: none;
-                  border: 1px solid #ccc;
-                  padding: 1rem;
-                  border-radius: 8px;
-                  color: #000;
-                  transition: box-shadow 0.3s ease;
-                  display: block;
-                "
+                style="text-decoration: none; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; color: #000; transition: box-shadow 0.3s ease; display: block;"
                 key={servicio.id}
               >
                 <img
@@ -111,44 +91,154 @@ const rutas = {
         </section>
       </main>
 
+      <!-- Simplified benefits section with clean card design -->
+      <section class="benefits-section">
+        <div class="benefits-container">
+          <h3 class="benefits-title">Nuestros Beneficios</h3>
+
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h4 class="benefit-title">Trayectoria Comprobada</h4>
+              <p class="benefit-date">12 años de experiencia</p>
+              <p class="benefit-description">
+                Defensa en contravenciones y representación en diversos procesos
+                judiciales.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h4 class="benefit-title">Defensa Legal Integral</h4>
+              <p class="benefit-date">Especializado</p>
+              <p class="benefit-description">
+                Representación profesional en diversas áreas del derecho,
+                garantizando la protección de tus derechos.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  ></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <h4 class="benefit-title">
+                Gestión Jurídica y Asesoría Documental
+              </h4>
+              <p class="benefit-date">Servicio completo</p>
+              <p class="benefit-description">
+                Asesoría en trámites legales, con un enfoque personalizado y
+                seguro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Redesigned second-container with professional isotipo presentation -->
       <main class="second-container">
-        <h3 class="scroll-animate" data-animation="slide-up">
-          ¿Necesitas asesoría legal?
-        </h3>
-        <img
-          class="isotipo scroll-animate"
-          data-animation="slide-in-left"
-          src="/src/assets/lexloci2.jpg"
-          alt="Perfil de abogado"
-          style="width: 320px; display: block; margin: 2rem auto;"
-        />
-        <p class="scroll-animate" data-animation="slide-up">
-          Justicia con visión estratégica y compromiso ético. Contáctame y
-          descubre cómo puedo ayudarte a proteger tus derechos y alcanzar los
-          mejores resultados en tu caso.
-        </p>
-        <a
-          href="/form"
-          class="scroll-animate"
-          data-animation="slide-up"
-          style="
-            padding: 0.6em 1.2em; 
-            font-size: 1rem; 
-            border-radius: 4px; 
-            border:none; 
-            background: linear-gradient(135deg, #004494, #0057b8, #1e73e6);
-            color: white; 
-            cursor: pointer;
-          "
-        >
-          Trabajemos juntos
-        </a>
+        <div class="cta-content">
+          <h3 class="scroll-animate" data-animation="slide-up">
+            ¿Necesitas asesoría legal?
+          </h3>
+
+          <div
+            class="isotipo-wrapper scroll-animate"
+            data-animation="slide-in-left"
+          >
+            <img
+              class="isotipo"
+              src="/src/assets/lexloci2.jpg"
+              alt="LEXLOCI - Símbolo de justicia y excelencia legal"
+            />
+          </div>
+
+          <p class="cta-description scroll-animate" data-animation="slide-up">
+            Justicia con visión estratégica y compromiso ético. Contáctanos y
+            descubre cómo podemos ayudarte a proteger tus derechos y alcanzar
+            los mejores resultados en tu caso.
+          </p>
+
+          <a
+            href="/form"
+            class="cta-button scroll-animate"
+            data-animation="slide-up"
+          >
+            Trabajemos juntos
+          </a>
+        </div>
       </main>
     </main>
     <Footer />
 
+    <!-- Added floating WhatsApp button -->
+    <a
+      href="https://wa.me/593983844657"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float"
+      aria-label="Contactar por WhatsApp"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="white"
+      >
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        ></path>
+      </svg>
+    </a>
+
     <script>
-      // Intersection Observer para animaciones en scroll
+      // Intersection Observer for scroll animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -162,18 +252,18 @@ const rutas = {
 
             if (animation) {
               element.classList.add(animation);
-              // Una vez que se anima, no necesitamos seguir observando
+              // Once animated, no need to keep observing
               observer.unobserve(element);
             }
           }
         });
       }, observerOptions);
 
-      // Observar todos los elementos con la clase scroll-animate
+      // Observe all elements with the class scroll-animate
       document.addEventListener("DOMContentLoaded", () => {
         const elementsToAnimate = document.querySelectorAll(".scroll-animate");
         elementsToAnimate.forEach((el) => {
-          // Inicialmente ocultos
+          // Initially hidden
           el.style.opacity = "0";
           observer.observe(el);
         });
@@ -184,7 +274,7 @@ const rutas = {
 <style>
   html,
   body {
-    background: rgb(233, 236, 249);
+    background: #f1f5fa; /*color fondo */
     margin: 0;
     min-height: 100%;
     width: 100%;
@@ -192,7 +282,7 @@ const rutas = {
     overflow-x: hidden;
   }
 
-  /* Animaciones de traslación */
+  /* Animations for translation */
   @keyframes slideInLeft {
     0% {
       transform: translateX(-100px);
@@ -237,7 +327,7 @@ const rutas = {
     }
   }
 
-  /* Clases para aplicar las animaciones */
+  /* Classes to apply animations */
   .slide-in-left {
     animation: slideInLeft 1s ease-out forwards;
   }
@@ -254,13 +344,13 @@ const rutas = {
     animation: slideDown 1s ease-out forwards;
   }
 
-  /* Elementos con scroll-animate empiezan invisibles */
+  /* Elements with scroll-animate start invisible */
   .scroll-animate {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  /* Retrasos escalonados para elementos consecutivos */
+  /* Staggered delays for consecutive elements */
   .scroll-animate:nth-child(2) {
     animation-delay: 0.2s;
   }
@@ -293,34 +383,106 @@ const rutas = {
     line-height: 1.6;
   }
 
+  .hero-section {
+    background-image: url("/src/assets/fondoportada.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h5 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-content p {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-button {
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
+  }
+
   .services {
     margin-top: 2rem;
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    padding: 2rem 1rem;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px #90bce6;
-    border: 1px solid #5383ea;
-    border-radius: 15px;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 10px 30px rgba(0, 65, 196, 0.08);
+    border: none;
+    border-radius: 20px;
     box-sizing: border-box;
   }
 
   .services h4 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     color: #0041c4;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
   }
 
   .cards-container {
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    margin-top: 1.5rem;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 2rem;
     width: 100%;
     box-sizing: border-box;
   }
@@ -328,78 +490,84 @@ const rutas = {
   .cards-container h5 {
     text-align: center;
     color: #d97706;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
   }
 
   .cards-container p {
-    text-align: justify;
+    text-align: center;
+    line-height: 1.7;
+    color: #475569;
   }
 
   .card {
-    border-radius: 15px;
-    box-shadow: 0 4px 8px #94c6f5;
-    border: 2px solid #5383ea;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(83, 131, 234, 0.15);
     display: flex;
     flex-direction: column;
-    transition:
-      box-shadow 0.3s ease,
-      transform 0.25s ease;
-    background: #fff;
-    padding: 1.5rem 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff;
+    padding: 2rem 1.5rem;
     box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover::before {
+    transform: scaleX(1);
   }
 
   .card:hover {
-    box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 65, 196, 0.15);
+    transform: translateY(-8px);
+    border-color: rgba(217, 119, 6, 0.3);
   }
 
   .card h5 {
-    margin: 0 0 0.7rem 0;
+    margin: 0 0 1rem 0;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .card p {
     margin: 0;
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    line-height: 1.7;
   }
 
   .card-image {
-    width: 180px;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 15%;
-    margin-bottom: 1rem;
-    border: 3px solid #686869;
+    width: 100%;
+    max-width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: none;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
   }
 
-  .perfil {
-    border: #7aa8f7 4px solid;
-    max-width: 420px;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 2rem auto;
-  }
-
-  .card-icon {
-    align-self: flex-end;
-    width: 30px;
-    height: 30px;
-    background-color: #547ccd;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.8rem;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
+  .card:hover .card-image {
+    transform: scale(1.05);
   }
 
   .second-container {
@@ -430,23 +598,184 @@ const rutas = {
     margin: 2rem auto;
   }
 
+  .benefits-section {
+    background: transparent;
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 3rem auto;
+    box-sizing: border-box;
+  }
+
+  .benefits-title {
+    color: #0041c4;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+  }
+
+  .benefits-subtitle {
+    display: none;
+  }
+
+  .benefits-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .benefit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 280px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .benefit-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff3e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #d97706;
+  }
+
+  .benefit-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .benefit-title {
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .benefit-date {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+  }
+
+  .benefit-description {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .cta-button {
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background: linear-gradient(135deg, #0041c4, #2563eb);
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 65, 196, 0.4);
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 65, 196, 0.4);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 65, 196, 0.6);
+  }
+
   @media (max-width: 600px) {
     .services,
-    .second-container {
+    .second-container,
+    .benefits-section {
       max-width: 98vw;
-      padding: 1rem 0.5rem;
+      padding: 2rem 1rem;
     }
+
+    .services h4 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
     .cards-container {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
     }
+
+    .benefits-grid {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .card,
+    .benefit-card {
+      padding: 1.5rem 1rem;
+    }
+
     .card-image {
-      width: 80px;
-      max-width: 90vw;
+      height: 180px;
+      max-width: 100%;
     }
-    .perfil,
-    .isotipo {
-      max-width: 260px;
+
+    .hero-section {
+      height: 400px;
+      padding: 1rem;
+    }
+    .hero-content {
+      max-width: 100%;
+    }
+    .hero-button {
+      padding: 0.4em 0.8em;
+      font-size: 0.85rem;
     }
   }
 
@@ -461,15 +790,19 @@ const rutas = {
     .principal,
     .services,
     .second-container,
+    .benefits-section,
     .cards-container,
-    .card {
+    .benefit-grid,
+    .card,
+    .benefit-card {
       width: 100%;
       margin: 0;
       padding: 0.5rem;
       box-sizing: border-box;
     }
 
-    .card {
+    .card,
+    .benefit-card {
       flex: 1 1 100%;
     }
 
@@ -479,8 +812,13 @@ const rutas = {
     }
 
     img,
-    .perfil,
-    .isotipo {
+    .hero-section,
+    .second-container,
+    .benefits-section,
+    .cards-container,
+    .benefit-grid,
+    .card,
+    .benefit-card {
       width: 100%;
       max-width: 200px;
       height: auto;
