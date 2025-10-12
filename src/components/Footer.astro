@@ -1,8 +1,4 @@
 ---
-import scale from "/imagenes/logo.png";
-import whatsapp from "/imagenes/whatsapp.png";
-import email from "/imagenes/email.png";
-import ubicacion from "/imagenes/ubicacion.png";
 import { SITE_TITLE } from "../consts";
 
 const today = new Date();
@@ -10,20 +6,22 @@ const today = new Date();
 
 <footer>
   <nav class="footer-content">
-    <!-- Información de contacto -->
     <div class="informacion">
       <div class="logo-nombre">
-        <img src={scale.src} alt="Ícono" />
+        <img src="/imagenes/logo.png" alt="Ícono" />
         <h2><a href="/">{SITE_TITLE}</a></h2>
       </div>
       <ul>
-        <li><img src={whatsapp.src} alt="Tlf" /> +593 983844657</li>
-        <li><img src={email.src} alt="Correo" /> dr.jorgeona@gmail.com</li>
-        <li><img src={ubicacion.src} alt="Ubicación" /> Quito, Ecuador</li>
+        <li><img src="/imagenes/whatsapp.png" alt="Tlf" /> +593 983844657</li>
+        <li>
+          <img src="/imagenes/email.png" alt="Correo" /> dr.jorgeona@gmail.com
+        </li>
+        <li>
+          <img src="/imagenes/ubicacion.png" alt="Ubicación" /> Quito, Ecuador
+        </li>
       </ul>
     </div>
 
-    <!-- Mapa -->
     <div class="mapa">
       <h2>Ubicación</h2>
       <iframe
