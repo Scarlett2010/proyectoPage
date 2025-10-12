@@ -1,7 +1,7 @@
 ---
 title: "Derecho de Familia"
 description: "Ofrecemos asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas."
-image: "/public/imagenes/derechof2.jpg"
+image: "/imagenes/derechof2.jpg"
 ---
 
 Ofrecemos asesoría integral en todas las áreas del derecho de familia, protegiendo los derechos e intereses de mis clientes en momentos delicados de sus vidas.

@@ -1,7 +1,7 @@
 ---
 title: "Derecho Civil"
 description: "Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales."
-image: "/public/imagenes/dr-ja.jpg"
+image: "/imagenes/dr-ja.jpg"
 ---
 
 Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales.
