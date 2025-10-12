@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 1️⃣ Correo para el propietario
     await transporter.sendMail({
-      from: `"Formulario Web" <${process.env.SMTP_USER}>`,
+      from: `"Formulario Web" <${process.env.RECEIVER_EMAIL}>`,
       to: process.env.RECEIVER_EMAIL,
       subject: "Nueva solicitud de asesoría jurídica",
       html: `
@@ -44,7 +44,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 2️⃣ Correo de confirmación para el cliente
     await transporter.sendMail({
-      from: `"${"Jorge Oña Asesoría Jurídica"}" <${process.env.SMTP_USER}>`,
+      from: `"${"Lexloci Asesoría Jurídica"}" <${process.env.RECEIVER_EMAIL}>`,
       to: correo,
       subject: "Confirmación de su cita",
       html: `
@@ -58,7 +58,7 @@ export const POST: APIRoute = async ({ request }) => {
         <p>Gracias por confiar en nosotros.</p>
         <br>
         <p>Atentamente,</p>
-        <p><strong>${"Jorge Oña Asesoría Jurídica"}</strong></p>
+        <p><strong>${"Lexloci Asesoría Jurídica"}</strong></p>
       `,
     });
 
