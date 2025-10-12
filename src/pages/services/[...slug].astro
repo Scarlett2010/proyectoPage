@@ -1,11 +1,12 @@
 ---
+export const prerender = false;
+
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
 const { slug } = Astro.params;
 
-// Carga dinámica del archivo según el slug
 const services = await import(`../../content/services/${slug}.md`);
 const { Content, frontmatter } = services;
 ---
