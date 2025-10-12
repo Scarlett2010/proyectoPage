@@ -1,7 +1,7 @@
 ---
 title: "Derecho Penal"
 description: "Proporcionamos defensa penal en todas las etapas del proceso penal, garantizando el respeto al debido proceso y los derechos constitucionales."
-image: "/src/assets/derechopenal.webp"
+image: "/public/imagenes/derechopenal.webp"
 ---
 
 Proporcionamos defensa penal en todas las etapas del proceso penal, garantizando el respeto al debido proceso y los derechos constitucionales.

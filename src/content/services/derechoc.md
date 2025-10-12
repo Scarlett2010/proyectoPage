@@ -1,7 +1,7 @@
 ---
 title: "Derecho Constitucional"
 description: "Especializados en la protección de garantías constitucionales dentro del ámbito penal y procesal."
-image: "/src/assets/derechocconstitucional2.webp"
+image: "/public/imagenes/derechocconstitucional2.webp"
 ---
 
 Especializados en la protección de garantías constitucionales dentro del ámbito penal y procesal
