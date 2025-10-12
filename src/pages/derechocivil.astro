@@ -41,7 +41,11 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
         las herramientas del ordenamiento jurídico ecuatoriano para garantizar
         una defensa sólida y efectiva en cada procedimiento.
       </p>
-      <img class="perfil" src="/src/assets/dr-ja.jpg" alt="Perfil de abogado" />
+      <img
+        class="perfil"
+        src="/public/imagenes/dr-ja.jpg"
+        alt="Perfil de abogado"
+      />
       <section class="cards-container">
         {
           servicios.map((servicio) => (
@@ -154,7 +158,7 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
   .cards-container p,
   .contenido p {
     text-align: justify;
-    font-size: 0.92rem; /* Más pequeño */
+    font-size: 0.92rem;
     opacity: 0.8;
     margin-bottom: 0.7rem;
   }

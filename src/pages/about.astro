@@ -15,14 +15,11 @@ import { SITE_TITLE } from "../consts";
   <body>
     <Header />
 
-    <!-- Hero section rediseñado con imagen a la izquierda y texto a la derecha -->
     <main class="hero-section">
       <div class="hero-container">
-        <!-- Agregando animación de scroll a la imagen del hero -->
         <div class="hero-image scroll-animate" data-animation="fade-in-left">
-          <img src="/src/assets/juntoati.png" alt="Equipo Lexloci" />
+          <img src="/public/imagenes/juntoati.png" alt="Equipo Lexloci" />
         </div>
-        <!-- Agregando animación de scroll al contenido del hero -->
         <div class="hero-content scroll-animate" data-animation="fade-in-right">
           <h1 class="hero-title">Representación legal experta</h1>
           <p class="hero-subtitle">
@@ -40,10 +37,8 @@ import { SITE_TITLE } from "../consts";
       </div>
     </main>
 
-    <!-- Sección propósito rediseñada con mejor layout -->
     <section class="purpose-section">
       <div class="purpose-container">
-        <!-- Agregando animación de scroll al contenido de propósito -->
         <div
           class="purpose-content scroll-animate"
           data-animation="fade-in-left"
@@ -63,17 +58,15 @@ import { SITE_TITLE } from "../consts";
             atención personalizada con soluciones efectivas.
           </p>
         </div>
-        <!-- Agregando animación de scroll a la imagen de propósito -->
         <div
           class="purpose-image scroll-animate"
           data-animation="fade-in-right"
         >
-          <img src="/src/assets/lexloci4.jpg" alt="Logo Lexloci" />
+          <img src="/public/imagenes/lexloci4.jpg" alt="Logo Lexloci" />
         </div>
       </div>
     </section>
 
-    <!-- Sección de equipo completamente rediseñada con tarjetas profesionales -->
     <section class="team-section">
       <h2 class="team-title">NUESTRO EQUIPO</h2>
       <p class="team-subtitle">
@@ -85,7 +78,7 @@ import { SITE_TITLE } from "../consts";
           <div class="team-image-wrapper">
             <img
               class="team-image"
-              src="/src/assets/fotoportada.jpg"
+              src="/public/imagenes/fotoportada.jpg"
               alt="Dr. Jorge Oña"
             />
           </div>
@@ -104,7 +97,7 @@ import { SITE_TITLE } from "../consts";
           <div class="team-image-wrapper">
             <img
               class="team-image"
-              src="/src/assets/dr-pn.jpg"
+              src="/public/imagenes/dr-pn.jpg"
               alt="Dr. Paúl Nágera"
             />
           </div>
@@ -122,7 +115,7 @@ import { SITE_TITLE } from "../consts";
           <div class="team-image-wrapper">
             <img
               class="team-image"
-              src="/src/assets/dr-ja.jpg"
+              src="/public/imagenes/dr-ja.jpg"
               alt="Dr. Jhon Alarcón"
             />
           </div>
@@ -140,7 +133,6 @@ import { SITE_TITLE } from "../consts";
 
     <Footer />
 
-    <!-- Added floating WhatsApp button -->
     <a
       href="https://wa.me/593983844657"
       target="_blank"
@@ -161,7 +153,6 @@ import { SITE_TITLE } from "../consts";
     </a>
 
     <script>
-      // Intersection Observer para animaciones en scroll
       const observerOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -80px 0px",
@@ -222,7 +213,6 @@ import { SITE_TITLE } from "../consts";
     color: #1e293b;
   }
 
-  /* Animaciones mejoradas y más profesionales */
   @keyframes slideUp {
     0% {
       opacity: 0;
@@ -273,7 +263,6 @@ import { SITE_TITLE } from "../consts";
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Hero section completamente rediseñado con imagen integrada al fondo */
   .hero-section {
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     padding: 0;
@@ -293,7 +282,6 @@ import { SITE_TITLE } from "../consts";
     min-height: 320px;
   }
 
-  /* Imagen ocupa 45% del ancho sin padding, integrada al diseño */
   .hero-image {
     flex: 0 0 45%;
     display: flex;
@@ -312,7 +300,6 @@ import { SITE_TITLE } from "../consts";
     display: block;
   }
 
-  /* Contenido con fondo que se integra con la imagen */
   .hero-content {
     flex: 1;
     padding: 2.5rem 3rem;
@@ -350,7 +337,6 @@ import { SITE_TITLE } from "../consts";
     color: #cbd5e1;
   }
 
-  /* Sección propósito mejorada */
   .purpose-section {
     background: white;
     padding: 5rem 2rem;
@@ -395,7 +381,6 @@ import { SITE_TITLE } from "../consts";
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  /* Sección de equipo con animaciones profesionales y sutiles */
   .team-section {
     background: #f1f5fa;
     padding: 5rem 2rem;
@@ -425,7 +410,6 @@ import { SITE_TITLE } from "../consts";
     gap: 3rem;
   }
 
-  /* Tarjetas con animaciones más profesionales y efectos hover mejorados */
   .team-card {
     background: white;
     border-radius: 16px;
@@ -497,7 +481,6 @@ import { SITE_TITLE } from "../consts";
     margin: 0;
   }
 
-  /* Responsive mejorado para mantener profesionalismo en móviles */
   @media (max-width: 968px) {
     .hero-container {
       min-height: 320px;
@@ -570,7 +553,6 @@ import { SITE_TITLE } from "../consts";
     }
   }
 
-  /* Centrar imagen juntoati en pantallas de 721px o menos */
   @media (max-width: 721px) {
     .hero-image {
       display: flex;
@@ -585,7 +567,6 @@ import { SITE_TITLE } from "../consts";
     }
   }
 
-  /* Added WhatsApp floating button styles */
   .whatsapp-float {
     position: fixed;
     bottom: 30px;

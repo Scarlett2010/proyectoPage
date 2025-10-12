@@ -2,9 +2,9 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import whatsapp from "../assets/whatsapp.png";
-import email from "../assets/email.png";
-import linkedin from "../assets/linkedin.png";
+import whatsapp from "../images/whatsapp.png";
+import email from "../images/email.png";
+import linkedin from "../images/linkedin.png";
 ---
 
 <html lang="es">
@@ -26,7 +26,6 @@ import linkedin from "../assets/linkedin.png";
       <!-- 🔹 Formulario -->
       <form id="formulario" class="form-card">
         <div class="form-fields">
-          <!-- primera fila: nombre y correo -->
           <div class="form-group half">
             <label>Nombre *</label>
             <input
@@ -46,7 +45,6 @@ import linkedin from "../assets/linkedin.png";
             />
           </div>
 
-          <!-- resto en filas -->
           <div class="form-group full-width">
             <label>Número de celular *</label>
             <input
@@ -85,7 +83,6 @@ import linkedin from "../assets/linkedin.png";
         <button type="submit">Enviar solicitud de consulta</button>
       </form>
 
-      <!-- 🔹 Recuadros de contacto -->
       <div class="contact-cards">
         <div class="contact-card">
           <img src={whatsapp.src} alt="WhatsApp" />

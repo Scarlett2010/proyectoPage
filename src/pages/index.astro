@@ -5,23 +5,19 @@ import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
 
-// Cargamos todos los servicios
 let servicios = await getCollection("services");
 
-// Orden deseado
 const orden = {
   "Derecho Penal": 1,
   "Derecho Constitucional": 2,
   "Derecho Civil": 3,
-  "Derecho de Familia": 3, // Igual que Derecho Civil para agrupar juntos
+  "Derecho de Familia": 3,
 };
 
-// Reordenamos según el orden definido
 servicios = servicios.sort(
   (a, b) => (orden[a.data.title] ?? 99) - (orden[b.data.title] ?? 99)
 );
 
-// 🔹 Rutas personalizadas por servicio
 const rutas = {
   "Derecho Penal": "/derechop",
   "Derecho Constitucional": "/derechoc",
@@ -36,12 +32,9 @@ const rutas = {
   </head>
   <body>
     <Header />
-    <!-- Hero section with background image and overlay text -->
     <div class="hero-section">
       <div class="hero-content">
-        <h5>
-          Representación legal experta | Resultados garantizados
-        </h5>
+        <h5>Representación legal experta | Resultados garantizados</h5>
         <p>
           Cada caso es único, cada cliente es prioritario. Ofrecemos un
           acompañamiento jurídico integral desde la consulta inicial hasta la
@@ -71,13 +64,13 @@ const rutas = {
                   src={
                     servicio.data.image ||
                     (servicio.data.title === "Derecho Civil"
-                      ? "/src/assets/derechocivil2.jpg"
+                      ? "/public/imagenes/derechocivil2.jpg"
                       : servicio.data.title === "Derecho Constitucional"
-                        ? "/src/assets/derechocconstitucional2.webp"
+                        ? "/public/imagenes/derechocconstitucional2.webp"
                         : servicio.data.title === "Derecho Penal"
-                          ? "/src/assets/derechopenal.webp"
+                          ? "/public/imagenes/derechopenal.webp"
                           : servicio.data.title === "Derecho de Familia"
-                            ? "/src/assets/derechof2.jpg"
+                            ? "/public/imagenes/derechof2.jpg"
                             : "")
                   }
                   alt={servicio.data.title}
@@ -91,7 +84,6 @@ const rutas = {
         </section>
       </main>
 
-      <!-- Simplified benefits section with clean card design -->
       <section class="benefits-section">
         <div class="benefits-container">
           <h3 class="benefits-title">Nuestros Beneficios</h3>
@@ -180,7 +172,6 @@ const rutas = {
         </div>
       </section>
 
-      <!-- Redesigned second-container with professional isotipo presentation -->
       <main class="second-container">
         <div class="cta-content">
           <h3 class="scroll-animate" data-animation="slide-up">
@@ -193,7 +184,7 @@ const rutas = {
           >
             <img
               class="isotipo"
-              src="/src/assets/lexloci2.jpg"
+              src="/public/imagenes/lexloci2.jpg"
               alt="LEXLOCI - Símbolo de justicia y excelencia legal"
             />
           </div>
@@ -216,7 +207,6 @@ const rutas = {
     </main>
     <Footer />
 
-    <!-- Added floating WhatsApp button -->
     <a
       href="https://wa.me/593983844657"
       target="_blank"
@@ -238,7 +228,6 @@ const rutas = {
     </a>
 
     <script>
-      // Intersection Observer for scroll animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -259,7 +248,6 @@ const rutas = {
         });
       }, observerOptions);
 
-      // Observe all elements with the class scroll-animate
       document.addEventListener("DOMContentLoaded", () => {
         const elementsToAnimate = document.querySelectorAll(".scroll-animate");
         elementsToAnimate.forEach((el) => {
@@ -274,7 +262,7 @@ const rutas = {
 <style>
   html,
   body {
-    background: #f1f5fa; /*color fondo */
+    background: #f1f5fa;
     margin: 0;
     min-height: 100%;
     width: 100%;
@@ -282,7 +270,6 @@ const rutas = {
     overflow-x: hidden;
   }
 
-  /* Animations for translation */
   @keyframes slideInLeft {
     0% {
       transform: translateX(-100px);
@@ -327,7 +314,6 @@ const rutas = {
     }
   }
 
-  /* Classes to apply animations */
   .slide-in-left {
     animation: slideInLeft 1s ease-out forwards;
   }
@@ -344,13 +330,11 @@ const rutas = {
     animation: slideDown 1s ease-out forwards;
   }
 
-  /* Elements with scroll-animate start invisible */
   .scroll-animate {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  /* Staggered delays for consecutive elements */
   .scroll-animate:nth-child(2) {
     animation-delay: 0.2s;
   }
@@ -384,7 +368,7 @@ const rutas = {
   }
 
   .hero-section {
-    background-image: url("/src/assets/fondoportada.jpg");
+    background-image: url("/public/imagenes/fondoportada.jpg");
     background-size: cover;
     background-position: center;
     height: 500px;
