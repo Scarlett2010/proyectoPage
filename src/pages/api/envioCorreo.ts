@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ request }) => {
       port: Number(process.env.SMTP_PORT),
       secure: Number(process.env.SMTP_PORT) === 465,
       auth: {
-        user: process.env.SMTP_USER,
+        user: process.env.RECEIVER_EMAIL,
         pass: process.env.SMTP_PASS,
       },
     });
