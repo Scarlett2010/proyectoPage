@@ -1,15 +1,12 @@
-import { type NextRequest, NextResponse } from "next/server"
+import type { APIRoute } from "astro"
 import nodemailer from "nodemailer"
 
-export async function POST(request: NextRequest) {
+export const prerender = false
+
+export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json()
     const { nombres, correo, numero, fecha, especialidad, descripcion } = body
-
-    // Validación básica
-    if (!nombres || !correo || !numero || !fecha || !especialidad) {
-      return NextResponse.json({ success: false, error: "Faltan campos requeridos" }, { status: 400 })
-    }
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -23,8 +20,8 @@ export async function POST(request: NextRequest) {
 
     // 1️⃣ Correo para el propietario
     await transporter.sendMail({
-      from: `"Formulario Web" <${process.env.SMTP_USER}>`,
-      replyTo: process.env.RECEIVER_EMAIL, // <-- Las respuestas irán aquí
+      from: `"Formulario Web" <${process.env.SMTP_USER}>`, // Usar SMTP_USER como remitente autenticado
+      replyTo: process.env.RECEIVER_EMAIL, // Las respuestas irán a RECEIVER_EMAIL (abogado@gmail.com)
       to: process.env.RECEIVER_EMAIL,
       subject: "Nueva solicitud de asesoría jurídica",
       html: `
@@ -45,8 +42,8 @@ export async function POST(request: NextRequest) {
 
     // 2️⃣ Correo de confirmación para el cliente
     await transporter.sendMail({
-      from: `"Lexloci Asesoría Jurídica" <${process.env.SMTP_USER}>`,
-      replyTo: process.env.RECEIVER_EMAIL, // <-- Las respuestas del cliente irán aquí
+      from: `"Lexloci Asesoría Jurídica" <${process.env.SMTP_USER}>`, // Usar SMTP_USER como remitente autenticado
+      replyTo: process.env.RECEIVER_EMAIL, // Las respuestas del cliente irán a RECEIVER_EMAIL (abogado@gmail.com)
       to: correo,
       subject: "Confirmación de su cita",
       html: `
@@ -64,9 +61,9 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    return NextResponse.json({ success: true }, { status: 200 })
+    return new Response(JSON.stringify({ success: true }), { status: 200 })
   } catch (err) {
     console.error("Error enviando correo:", err)
-    return NextResponse.json({ success: false, error: "Error al enviar el correo" }, { status: 500 })
+    return new Response(JSON.stringify({ success: false }), { status: 500 })
   }
 }
