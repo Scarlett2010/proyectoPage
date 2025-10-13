@@ -1,12 +1,15 @@
-import type { APIRoute } from "astro"
-import nodemailer from "nodemailer"
+import type { APIRoute } from "astro";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
-export const prerender = false
+dotenv.config();
+
+export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const body = await request.json()
-    const { nombres, correo, numero, fecha, especialidad, descripcion } = body
+    const body = await request.json();
+    const { nombres, correo, numero, fecha, especialidad, descripcion } = body;
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -16,12 +19,11 @@ export const POST: APIRoute = async ({ request }) => {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-    })
+    });
 
     // 1️⃣ Correo para el propietario
     await transporter.sendMail({
-      from: `"Formulario Web" <${process.env.SMTP_USER}>`, // Usar SMTP_USER como remitente autenticado
-      replyTo: process.env.RECEIVER_EMAIL, // Las respuestas irán a RECEIVER_EMAIL (abogado@gmail.com)
+      from: `"Formulario Web" <${process.env.SMTP_USER}>`,
       to: process.env.RECEIVER_EMAIL,
       subject: "Nueva solicitud de asesoría jurídica",
       html: `
@@ -38,12 +40,11 @@ export const POST: APIRoute = async ({ request }) => {
         </br>
         <p>Por favor, póngase en contacto con el cliente lo antes posible.</p>
       `,
-    })
+    });
 
     // 2️⃣ Correo de confirmación para el cliente
     await transporter.sendMail({
-      from: `"Lexloci Asesoría Jurídica" <${process.env.SMTP_USER}>`, // Usar SMTP_USER como remitente autenticado
-      replyTo: process.env.RECEIVER_EMAIL, // Las respuestas del cliente irán a RECEIVER_EMAIL (abogado@gmail.com)
+      from: `"${"Lexloci Asesoría Jurídica"}" <${process.env.SMTP_USER}>`,
       to: correo,
       subject: "Confirmación de su cita",
       html: `
@@ -57,13 +58,13 @@ export const POST: APIRoute = async ({ request }) => {
         <p>Gracias por confiar en nosotros.</p>
         <br>
         <p>Atentamente,</p>
-        <p><strong>Lexloci Asesoría Jurídica</strong></p>
+        <p><strong>${"Lexloci Asesoría Jurídica"}</strong></p>
       `,
-    })
+    });
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 })
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (err) {
-    console.error("Error enviando correo:", err)
-    return new Response(JSON.stringify({ success: false }), { status: 500 })
+    console.error("Error enviando correo:", err);
+    return new Response(JSON.stringify({ success: false }), { status: 500 });
   }
-}
+};
