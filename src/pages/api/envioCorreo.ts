@@ -1,29 +1,30 @@
-import type { APIRoute } from "astro";
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
+import { type NextRequest, NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
-dotenv.config();
-
-export const prerender = false;
-
-export const POST: APIRoute = async ({ request }) => {
+export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { nombres, correo, numero, fecha, especialidad, descripcion } = body;
+    const body = await request.json()
+    const { nombres, correo, numero, fecha, especialidad, descripcion } = body
+
+    // Validación básica
+    if (!nombres || !correo || !numero || !fecha || !especialidad) {
+      return NextResponse.json({ success: false, error: "Faltan campos requeridos" }, { status: 400 })
+    }
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
       secure: Number(process.env.SMTP_PORT) === 465,
       auth: {
-        user: process.env.RECEIVER_EMAIL,
+        user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-    });
+    })
 
     // 1️⃣ Correo para el propietario
     await transporter.sendMail({
-      from: `"Formulario Web" <${process.env.RECEIVER_EMAIL}>`,
+      from: `"Formulario Web" <${process.env.SMTP_USER}>`,
+      replyTo: process.env.RECEIVER_EMAIL, // <-- Las respuestas irán aquí
       to: process.env.RECEIVER_EMAIL,
       subject: "Nueva solicitud de asesoría jurídica",
       html: `
@@ -40,11 +41,12 @@ export const POST: APIRoute = async ({ request }) => {
         </br>
         <p>Por favor, póngase en contacto con el cliente lo antes posible.</p>
       `,
-    });
+    })
 
     // 2️⃣ Correo de confirmación para el cliente
     await transporter.sendMail({
-      from: `"${"Lexloci Asesoría Jurídica"}" <${process.env.RECEIVER_EMAIL}>`,
+      from: `"Lexloci Asesoría Jurídica" <${process.env.SMTP_USER}>`,
+      replyTo: process.env.RECEIVER_EMAIL, // <-- Las respuestas del cliente irán aquí
       to: correo,
       subject: "Confirmación de su cita",
       html: `
@@ -58,13 +60,13 @@ export const POST: APIRoute = async ({ request }) => {
         <p>Gracias por confiar en nosotros.</p>
         <br>
         <p>Atentamente,</p>
-        <p><strong>${"Lexloci Asesoría Jurídica"}</strong></p>
+        <p><strong>Lexloci Asesoría Jurídica</strong></p>
       `,
-    });
+    })
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return NextResponse.json({ success: true }, { status: 200 })
   } catch (err) {
-    console.error("Error enviando correo:", err);
-    return new Response(JSON.stringify({ success: false }), { status: 500 });
+    console.error("Error enviando correo:", err)
+    return NextResponse.json({ success: false, error: "Error al enviar el correo" }, { status: 500 })
   }
-};
+}
