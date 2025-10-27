@@ -4,11 +4,11 @@ description: "Proporcionamos defensa penal en todas las etapas del proceso penal
 image: "/imagenes/derechopenal.webp"
 ---
 
-Proporcionamos defensa penal en todas las etapas del proceso penal, garantizando el respeto al debido proceso y los derechos constitucionales.
+Proporcionamos representación en todas las etapas del proceso penal, garantizando el respeto al debido proceso y los derechos constitucionales.
 
-- Representación legal de imputados, víctimas o querellantes en procesos penales
-- Audiencias de flagrancia, preparatoria de juicio y juicio oral
-- Presentación de medidas cautelares y solicitudes de prisión preventiva
+- Representación legal de imputados, procesados, víctimas o querellantes en procesos penales
+- Audiencias de flagrancia, preparatoria de juicio y juicio
+- Presentación de medidas cautelares y apelación de prisión preventiva
 - Negociación de acuerdos reparatorios y procedimientos abreviados
 - Interposición de recursos de apelación y casación
 - Asesoría en investigación fiscal y policial

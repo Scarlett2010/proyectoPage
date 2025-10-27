@@ -4,14 +4,15 @@ description: "Manejamos la integral de las consecuencias civiles derivadas de he
 image: "/imagenes/dr-ja.jpg"
 ---
 
-Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales.
+Defendemos sus derechos con estrategia jurídica precisa y compromiso inquebrantable. Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales, garantizando la protección efectiva de su patrimonio, sus intereses y su tranquilidad.
 
 Áreas de especialización:
 
-- Responsabilidad civil extracontractual: Reclamación de daños y perjuicios por delitos
-- Reparación integral: Cuantificación y cobro de daños materiales e inmateriales
-- Procesos civiles: Cobro de dinero, incumplimiento de contratos, resolución de conflictos patrimoniales
-- Ejecución de sentencias: Recuperación efectiva de indemnizaciones y compensaciones
-- Medidas cautelares reales: Embargos y secuestros para asegurar el cumplimiento de obligaciones
-- Prescripción: Análisis de términos y plazos para acciones civiles emergentes
-- Se atiendes procediminetos civiles en cuanto a personas, bienes, sucesiones de contratos.
+- Responsabilidad Civil y Reparación Integral
+- Procesos Civiles y Contractuales
+- Juicios Ejecutivos y Cobro Coactivo
+- Medidas Cautelares y Aseguramiento Patrimonial
+- Derecho Notarial y Registral
+- Ejecución de Sentencias y Recuperación Efectiva
+- Prescripción y Estrategia Procesal
+- Asesoría Integral y Representación Especializada

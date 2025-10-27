@@ -34,7 +34,7 @@ const rutas = {
     <Header />
     <div class="hero-section">
       <div class="hero-content">
-        <h5>Representación legal experta | Resultados garantizados</h5>
+        <h5>Representación legal experta con resultados garantizados</h5>
         <p>
           Cada caso es único, cada cliente es prioritario. Ofrecemos un
           acompañamiento jurídico integral desde la consulta inicial hasta la
@@ -190,9 +190,13 @@ const rutas = {
           </div>
 
           <p class="cta-description scroll-animate" data-animation="slide-up">
-            Justicia con visión estratégica y compromiso ético. Contáctanos y
-            descubre cómo podemos ayudarte a proteger tus derechos y alcanzar
-            los mejores resultados en tu caso.
+            Justicia con visión estratégica y compromiso ético. Cada caso es
+            analizado de manera individual, con una planificación jurídica
+            integral orientada a proteger sus derechos y su patrimonio.
+            Trabajamos con argumentos sólidos y una defensa técnica precisa para
+            alcanzar los mejores resultados en su caso. No deje que el tiempo
+            limite sus oportunidades de justicia. Contáctenos y descubra cómo
+            podemos ayudarle.
           </p>
 
           <a
@@ -264,6 +268,7 @@ const rutas = {
   body {
     background: #f1f5fa;
     margin: 0;
+    padding: 0;
     min-height: 100%;
     width: 100%;
     max-width: 100%;
@@ -371,7 +376,8 @@ const rutas = {
     background-image: url("/public/imagenes/fondoportada.jpg");
     background-size: cover;
     background-position: center;
-    height: 500px;
+    background-repeat: no-repeat;
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -400,6 +406,8 @@ const rutas = {
     width: 100%;
     position: relative;
     z-index: 2;
+    padding: 1.5rem;
+    box-sizing: border-box;
   }
 
   .hero-content h5 {
@@ -407,6 +415,9 @@ const rutas = {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-content p {
@@ -415,10 +426,12 @@ const rutas = {
     line-height: 1.8;
     margin-bottom: 2rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-button {
-    padding: 0.6em 1.2em;
+    padding: 0.8em 1.5em;
     font-size: 1rem;
     border-radius: 4px;
     border: none;
@@ -540,6 +553,7 @@ const rutas = {
     max-width: 280px;
     height: 200px;
     object-fit: cover;
+    object-position: center;
     border-radius: 12px;
     margin-bottom: 1.5rem;
     border: none;
@@ -673,7 +687,7 @@ const rutas = {
   }
 
   .cta-button {
-    padding: 0.6em 1.2em;
+    padding: 0.8em 1.5em;
     font-size: 1rem;
     border-radius: 4px;
     border: none;
@@ -705,23 +719,68 @@ const rutas = {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 65, 196, 0.4);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
+    z-index: 1000;
   }
 
   .whatsapp-float:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 65, 196, 0.6);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6);
+  }
+
+  /* Media queries mejoradas para tablets */
+  @media (max-width: 768px) {
+    .hero-section {
+      min-height: 450px;
+      padding: 1.5rem;
+    }
+
+    .hero-content h5 {
+      font-size: 1.75rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+    }
+
+    .services h4 {
+      font-size: 2rem;
+    }
+
+    .benefits-grid {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .benefit-card {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 
   @media (max-width: 600px) {
+    html,
+    body {
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .principal {
+      padding: 1rem 0.5rem;
+      max-width: 100%;
+    }
+
     .services,
     .second-container,
     .benefits-section {
-      max-width: 98vw;
+      max-width: 100%;
       padding: 2rem 1rem;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .services h4 {
@@ -732,103 +791,167 @@ const rutas = {
     .cards-container {
       grid-template-columns: 1fr;
       gap: 1.5rem;
+      padding: 0;
     }
 
     .benefits-grid {
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: center;
     }
 
     .card,
     .benefit-card {
       padding: 1.5rem 1rem;
+      width: 100%;
+      max-width: 100%;
     }
 
     .card-image {
       height: 180px;
       max-width: 100%;
+      width: 100%;
     }
 
     .hero-section {
-      height: 400px;
-      padding: 1rem;
+      min-height: 400px;
+      padding: 1.5rem 1rem;
+      background-attachment: scroll;
     }
+
     .hero-content {
       max-width: 100%;
+      padding: 1rem;
     }
-    .hero-button {
-      padding: 0.4em 0.8em;
-      font-size: 0.85rem;
+
+    .hero-content h5 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-button,
+    .cta-button {
+      padding: 0.7em 1.2em;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-float {
+      width: 56px;
+      height: 56px;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
     }
   }
 
-  @media (max-width: 380px) {
+  /* Media queries específicas para pantallas muy pequeñas - todo el ancho sin desbordamiento */
+  @media (max-width: 400px) {
     body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      word-break: break-word;
     }
 
     .principal,
     .services,
     .second-container,
-    .benefits-section,
-    .cards-container,
-    .benefit-grid,
-    .card,
-    .benefit-card {
+    .benefits-section {
       width: 100%;
+      max-width: 100vw;
+      padding: 1.5rem 0.75rem;
       margin: 0;
-      padding: 0.5rem;
       box-sizing: border-box;
     }
 
+    .cards-container {
+      gap: 1.25rem;
+      padding: 0;
+    }
+
     .card,
     .benefit-card {
-      flex: 1 1 100%;
+      padding: 1.25rem 0.875rem;
+      width: 100%;
+      max-width: 100%;
     }
 
     .card-image {
-      width: 60px;
-      max-width: 90vw;
-    }
-
-    img,
-    .hero-section,
-    .second-container,
-    .benefits-section,
-    .cards-container,
-    .benefit-grid,
-    .card,
-    .benefit-card {
       width: 100%;
-      max-width: 200px;
-      height: auto;
-      margin: 0 auto;
-      display: block;
+      max-width: 100%;
+      height: 160px;
     }
 
-    a {
-      font-size: 0.85rem;
-      padding: 0.4em 0.8em;
-      margin: 0.5rem auto;
-      display: inline-block;
+    .hero-section {
+      min-height: 350px;
+      padding: 1rem 0.75rem;
     }
 
-    footer,
-    .Footer {
-      margin: 0;
-      padding: 0.5rem;
-      width: 100%;
+    .hero-content {
+      padding: 0.75rem;
     }
-    p,
-    h5,
-    h4,
-    h3 {
-      word-break: break-word;
-      hyphens: auto;
+
+    .hero-content h5 {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+
+    .hero-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .hero-button,
+    .cta-button {
+      padding: 0.6em 1em;
+      font-size: 0.9rem;
+    }
+
+    .services h4 {
+      font-size: 1.5rem;
+    }
+
+    .card h5,
+    .cards-container h5 {
+      font-size: 1.25rem;
+    }
+
+    .card p,
+    .cards-container p {
+      font-size: 0.95rem;
+    }
+
+    .benefit-title {
+      font-size: 1rem;
+    }
+
+    .benefit-description {
+      font-size: 0.9rem;
+    }
+
+    .isotipo {
+      max-width: 280px;
+    }
+
+    .whatsapp-float {
+      width: 52px;
+      height: 52px;
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .whatsapp-float svg {
+      width: 26px;
+      height: 26px;
     }
   }
 </style>
