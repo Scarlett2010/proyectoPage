@@ -1,7 +1,7 @@
 ---
 title: "Derecho Civil"
 description: "Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales."
-image: "/imagenes/dr-ja.jpg"
+image: "/imagenes/derechocivil2.jpg"
 ---
 
 Defendemos sus derechos con estrategia jurídica precisa y compromiso inquebrantable. Manejamos la integral de las consecuencias civiles derivadas de hechos delictivos y procedimientos civiles generales, garantizando la protección efectiva de su patrimonio, sus intereses y su tranquilidad.
