@@ -18,17 +18,21 @@ import HeaderLink from "./HeaderLink.astro";
     </button>
     <div class="internal-links">
       <HeaderLink href="/">Inicio</HeaderLink>
+      <HeaderLink href="/services">Servicios</HeaderLink>
       <HeaderLink href="/about">Nosotros</HeaderLink>
       <HeaderLink href="/form">Contáctanos</HeaderLink>
     </div>
   </nav>
 
   <script>
-    const toggle = document.querySelector(".menu-toggle");
-    const links = document.querySelector(".internal-links");
-    toggle.addEventListener("click", () => {
-      links.classList.toggle("visible");
-    });
+    const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+    const links = document.querySelector<HTMLElement>(".internal-links");
+
+    if (toggle && links) {
+      toggle.addEventListener("click", () => {
+        links.classList.toggle("visible");
+      });
+    }
   </script>
 </header>
 

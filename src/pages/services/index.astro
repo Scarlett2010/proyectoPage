@@ -1,17 +1,44 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
 import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_URL } from "../../consts";
 
-const servicios = await getCollection("blog"); // Aquí "blog" es el nombre de la colección en content.config.ts
+const servicios = await getCollection("services");
+type ServiceEntry = (typeof servicios)[number];
+
+const pageTitle = `Servicios Legales en Quito | ${SITE_TITLE}`;
+const pageDescription =
+  "Conoce nuestras areas de practica legal en Quito: derecho penal, constitucional, civil y de familia con defensa tecnica y acompanamiento personalizado.";
+const pageKeywords = [
+  "servicios legales quito",
+  "derecho penal quito",
+  "derecho civil quito",
+  "abogado de familia quito",
+];
+const servicesStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: `${SITE_URL}/services`,
+  mainEntity: servicios.map((servicio: ServiceEntry) => ({
+    "@type": "Service",
+    name: servicio.data.title,
+    description: servicio.data.description,
+    url: `${SITE_URL}/services/${servicio.slug}`,
+  })),
+};
 ---
 
 <html lang="es">
   <head>
     <BaseHead
-      title="Nuestros Servicios"
-      description="Conoce las áreas legales en las que te podemos ayudar."
+      title={pageTitle}
+      description={pageDescription}
+      keywords={pageKeywords}
+      structuredData={[servicesStructuredData]}
     />
   </head>
   <body>
@@ -21,8 +48,8 @@ const servicios = await getCollection("blog"); // Aquí "blog" es el nombre de l
       <h1>Nuestros Servicios</h1>
       <div class="grid">
         {
-          servicios.map((servicio) => (
-            <a href={`/blog/${servicio.slug}/`} class="card">
+          servicios.map((servicio: ServiceEntry) => (
+            <a href={`/services/${servicio.slug}/`} class="card">
               <h2>{servicio.data.title}</h2>
               <p>{servicio.data.description}</p>
             </a>

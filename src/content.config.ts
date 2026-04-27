@@ -1,14 +1,13 @@
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob } from "astro/loaders";
+import { defineCollection, z } from "astro:content";
 
 const services = defineCollection({
-  loader: glob({ base: './src/content/services', pattern: '**/*.md' }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      description: z.string(),
-      heroImage: image().optional(), // opcional
-    }),
+  loader: glob({ base: "./src/content/services", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    image: z.string().optional(),
+  }),
 });
 
 export const collections = { services };

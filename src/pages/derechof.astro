@@ -1,29 +1,74 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from "../consts";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_URL } from "../consts";
+
+type ServicePageModule = {
+  frontmatter: {
+    title: string;
+    description: string;
+    image?: string;
+  };
+  Content: any;
+};
 
 // Importa todos los .md como módulos
 const serviciosImport = import.meta.glob("../content/services/derechof.md", {
   eager: true,
-});
+}) as Record<string, ServicePageModule>;
 
 // Convierte a array con slug, frontmatter y Content renderizable
-const servicios = Object.entries(serviciosImport).map(([path, module]) => {
-  return {
-    slug: path.split("/").pop().replace(/\.md$/, ""),
-    frontmatter: module.frontmatter,
-    Content: module.Content,
-  };
-});
+const servicios = Object.values(serviciosImport);
+
+const pageTitle = `Abogado de Familia en Quito | Divorcio y Pensiones | ${SITE_TITLE}`;
+const pageDescription =
+  "Acompanamiento legal en derecho de familia en Quito: divorcio, pensiones alimenticias, tenencia, regimen de visitas y reconocimiento de paternidad.";
+const pageKeywords = [
+  "abogado de familia quito",
+  "divorcio quito",
+  "pensiones alimenticias ecuador",
+  "tenencia de menores",
+];
+const familyStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Derecho de Familia",
+  name: "Asesoria en Derecho de Familia en Quito",
+  description: pageDescription,
+  provider: {
+    "@id": `${SITE_URL}/#organization`,
+  },
+  areaServed: "Quito, Ecuador",
+  url: `${SITE_URL}/derechof`,
+};
+const familyBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: SITE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Derecho de Familia",
+      item: `${SITE_URL}/derechof`,
+    },
+  ],
+};
 ---
 
 <html lang="es">
   <head>
     <BaseHead
-      title={SITE_TITLE + " | Nosotros"}
-      description="Conoce a LEXLOCI Abogados y sus especialidades legales."
+      title={pageTitle}
+      description={pageDescription}
+      keywords={pageKeywords}
+      structuredData={[familyStructuredData, familyBreadcrumb]}
     />
   </head>
   <body>
@@ -32,7 +77,7 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
       class="principal"
       style="max-width: 900px; margin: auto; padding: 2rem;"
     >
-      <h3>Servicios legales</h3>
+      <h1>{servicios[0]?.frontmatter.title || "Servicios legales"}</h1>
       <p>
         Nuestro compromiso es brindar asesoría legal experta utilizando todas
         las herramientas del ordenamiento jurídico ecuatoriano para garantizar
@@ -46,7 +91,7 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
       <section class="cards-container">
         {
           servicios.map((servicio) => (
-            <div class="card" key={servicio.slug}>
+            <div class="card">
               <div class="card-icon">⚖️</div>
               <h3>{servicio.frontmatter.title}</h3>
               <div class="contenido">
@@ -118,7 +163,7 @@ const servicios = Object.entries(serviciosImport).map(([path, module]) => {
     margin-right: auto;
   }
 
-  .principal h3 {
+  .principal h1 {
     text-align: center;
     margin-bottom: 1rem;
     color: #0041c4;

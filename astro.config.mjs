@@ -6,9 +6,14 @@ import { defineConfig } from "astro/config";
 
 import netlify from "@astrojs/netlify";
 
+/*const site = (
+  process.env.PUBLIC_SITE_URL || "https://lexlociabogados.com"
+).replace(/\/+$/, "");*/
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  //site,
+  trailingSlash: "never",
   integrations: [mdx(), sitemap()],
   adapter: netlify(),
 });

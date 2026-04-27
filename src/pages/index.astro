@@ -2,12 +2,21 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SITE_TITLE, SITE_URL } from "../consts";
 import { getCollection } from "astro:content";
 
-let servicios = await getCollection("services");
+type ServiceItem = {
+  id: string;
+  data: {
+    title: string;
+    description: string;
+    image?: string;
+  };
+};
 
-const orden = {
+let servicios = (await getCollection("services")) as ServiceItem[];
+
+const orden: Record<string, number> = {
   "Derecho Penal": 1,
   "Derecho Constitucional": 2,
   "Derecho Civil": 3,
@@ -15,26 +24,53 @@ const orden = {
 };
 
 servicios = servicios.sort(
-  (a, b) => (orden[a.data.title] ?? 99) - (orden[b.data.title] ?? 99)
+  (a, b) => (orden[a.data.title] ?? 99) - (orden[b.data.title] ?? 99),
 );
 
-const rutas = {
+const rutas: Record<string, string> = {
   "Derecho Penal": "/derechop",
   "Derecho Constitucional": "/derechoc",
   "Derecho Civil": "/derechocivil",
   "Derecho de Familia": "/derechof",
 };
+
+const homeTitle = `Abogados en Quito | Defensa Penal, Civil y Familiar | ${SITE_TITLE}`;
+const homeDescription =
+  "Firma legal en Quito con representacion en derecho penal, constitucional, civil y de familia. Consulta juridica personalizada para proteger tus derechos.";
+const homeKeywords = [
+  "abogados en quito",
+  "abogado penal quito",
+  "abogado civil quito",
+  "abogado de familia quito",
+  "asesoria legal quito",
+];
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Servicios legales de LEXLOCI ABOGADOS",
+  itemListElement: servicios.map((servicio: ServiceItem, index: number) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: servicio.data.title,
+    url: `${SITE_URL}${rutas[servicio.data.title] || "/"}`,
+  })),
+};
 ---
 
 <html lang="es">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead
+      title={homeTitle}
+      description={homeDescription}
+      keywords={homeKeywords}
+      structuredData={[homeStructuredData]}
+    />
   </head>
   <body>
     <Header />
     <div class="hero-section">
       <div class="hero-content">
-        <h5>Representación legal experta con resultados garantizados</h5>
+        <h1>Representacion legal experta con resultados comprobados</h1>
         <p>
           Cada caso es único, cada cliente es prioritario. Ofrecemos un
           acompañamiento jurídico integral desde la consulta inicial hasta la
@@ -53,12 +89,11 @@ const rutas = {
         <h4 style="margin-top: 0">Esperticia Juridica</h4>
         <section class="cards-container">
           {
-            servicios.map((servicio) => (
+            servicios.map((servicio: ServiceItem) => (
               <a
                 href={rutas[servicio.data.title] || "#"}
                 class="card"
                 style="text-decoration: none; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; color: #000; transition: box-shadow 0.3s ease; display: block;"
-                key={servicio.id}
               >
                 <img
                   src={
@@ -253,7 +288,8 @@ const rutas = {
       }, observerOptions);
 
       document.addEventListener("DOMContentLoaded", () => {
-        const elementsToAnimate = document.querySelectorAll(".scroll-animate");
+        const elementsToAnimate =
+          document.querySelectorAll<HTMLElement>(".scroll-animate");
         elementsToAnimate.forEach((el) => {
           // Initially hidden
           el.style.opacity = "0";
@@ -410,7 +446,7 @@ const rutas = {
     box-sizing: border-box;
   }
 
-  .hero-content h5 {
+  .hero-content h1 {
     color: white;
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -738,7 +774,7 @@ const rutas = {
       padding: 1.5rem;
     }
 
-    .hero-content h5 {
+    .hero-content h1 {
       font-size: 1.75rem;
     }
 
@@ -824,7 +860,7 @@ const rutas = {
       padding: 1rem;
     }
 
-    .hero-content h5 {
+    .hero-content h1 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
@@ -900,7 +936,7 @@ const rutas = {
       padding: 0.75rem;
     }
 
-    .hero-content h5 {
+    .hero-content h1 {
       font-size: 1.25rem;
       line-height: 1.4;
     }

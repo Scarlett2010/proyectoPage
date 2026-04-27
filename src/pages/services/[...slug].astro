@@ -2,18 +2,70 @@
 export const prerender = false;
 
 import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_URL } from "../../consts";
 
 const { slug } = Astro.params;
 
 const services = await import(`../../content/services/${slug}.md`);
 const { Content, frontmatter } = services;
+
+const pageTitle = `${frontmatter.title} | ${SITE_TITLE}`;
+const pageDescription = frontmatter.description;
+const pageImage = frontmatter.image || undefined;
+const pageKeywords = [
+  `${frontmatter.title.toLowerCase()} quito`,
+  "asesoria legal quito",
+  "abogado en quito",
+];
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: frontmatter.title,
+  name: `${frontmatter.title} en Quito`,
+  description: pageDescription,
+  provider: {
+    "@id": `${SITE_URL}/#organization`,
+  },
+  areaServed: "Quito, Ecuador",
+  url: `${SITE_URL}/services/${slug}`,
+};
+const serviceBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: SITE_URL,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Servicios",
+      item: `${SITE_URL}/services`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: frontmatter.title,
+      item: `${SITE_URL}/services/${slug}`,
+    },
+  ],
+};
 ---
 
 <html lang="es">
   <head>
-    <BaseHead title={frontmatter.title} description={frontmatter.description} />
+    <BaseHead
+      title={pageTitle}
+      description={pageDescription}
+      image={pageImage}
+      keywords={pageKeywords}
+      structuredData={[serviceStructuredData, serviceBreadcrumb]}
+    />
   </head>
   <body>
     <Header />

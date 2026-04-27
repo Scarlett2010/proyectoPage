@@ -2,20 +2,43 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_URL } from "../consts";
+
+const pageTitle = `Contacto Legal en Quito | ${SITE_TITLE}`;
+const pageDescription =
+  "Solicita una consulta legal personalizada con LEXLOCI ABOGADOS en Quito. Completa el formulario y recibe acompanamiento juridico en tu caso.";
+const pageKeywords = [
+  "consulta legal quito",
+  "contacto abogado quito",
+  "asesoria juridica quito",
+  "abogado ecuador",
+];
+const contactStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: `${SITE_URL}/form`,
+  isPartOf: {
+    "@id": `${SITE_URL}/#website`,
+  },
+};
 ---
 
 <html lang="es">
   <head>
     <BaseHead
-      title="Contacto"
-      description="Completa el formulario para solicitar una consulta legal personalizada"
+      title={pageTitle}
+      description={pageDescription}
+      keywords={pageKeywords}
+      structuredData={[contactStructuredData]}
     />
   </head>
   <body>
     <Header />
 
     <main class="form">
-      <h2>Contacto</h2>
+      <h1>Contacto</h1>
       <p class="subtitulo">
         Completa el formulario para solicitar una consulta legal personalizada
       </p>
@@ -101,12 +124,16 @@ import Footer from "../components/Footer.astro";
     <Footer />
 
     <script>
-      document
-        .getElementById("formulario")
-        .addEventListener("submit", async (e) => {
+      const formulario = document.getElementById("formulario");
+
+      if (formulario instanceof HTMLFormElement) {
+        formulario.addEventListener("submit", async (e) => {
           e.preventDefault();
 
-          const formData = new FormData(e.target);
+          const target = e.currentTarget;
+          if (!(target instanceof HTMLFormElement)) return;
+
+          const formData = new FormData(target);
           const data = Object.fromEntries(formData.entries());
 
           const res = await fetch("/api/envioCorreo", {
@@ -119,11 +146,12 @@ import Footer from "../components/Footer.astro";
 
           if (res.ok) {
             alert("Solicitud enviada correctamente.");
-            e.target.reset();
+            target.reset();
           } else {
             alert("Error al enviar la solicitud.");
           }
         });
+      }
     </script>
   </body>
 </html>
@@ -148,7 +176,7 @@ import Footer from "../components/Footer.astro";
     width: 100%;
   }
 
-  h2 {
+  h1 {
     text-align: center;
     margin-bottom: 0.3em;
     color: #0041c4;

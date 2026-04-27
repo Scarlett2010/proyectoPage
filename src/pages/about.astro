@@ -2,14 +2,36 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, SITE_URL } from "../consts";
+
+const pageTitle = `Nosotros | ${SITE_TITLE} en Quito`;
+const pageDescription =
+  "Conoce al equipo de LEXLOCI ABOGADOS en Quito: experiencia en derecho penal, constitucional, civil y de familia con atencion personalizada.";
+const pageKeywords = [
+  "abogados en quito",
+  "equipo juridico quito",
+  "lexloci abogados",
+  "abogado penal quito",
+];
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: `${SITE_URL}/about`,
+  isPartOf: {
+    "@id": `${SITE_URL}/#website`,
+  },
+};
 ---
 
 <html lang="es">
   <head>
     <BaseHead
-      title={SITE_TITLE + " | Nosotros"}
-      description="Conoce a LEXLOCI Abogados y sus especialidades legales."
+      title={pageTitle}
+      description={pageDescription}
+      keywords={pageKeywords}
+      structuredData={[aboutStructuredData]}
     />
   </head>
   <body>
@@ -159,7 +181,7 @@ import { SITE_TITLE } from "../consts";
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          const element = entry.target;
+          const element = entry.target as HTMLElement;
           const animation = element.getAttribute("data-animation");
 
           if (entry.isIntersecting) {
@@ -181,7 +203,8 @@ import { SITE_TITLE } from "../consts";
       }, observerOptions);
 
       document.addEventListener("DOMContentLoaded", () => {
-        const elementsToAnimate = document.querySelectorAll(".scroll-animate");
+        const elementsToAnimate =
+          document.querySelectorAll<HTMLElement>(".scroll-animate");
         elementsToAnimate.forEach((el, index) => {
           el.style.opacity = "0";
           el.style.transform = "translateY(30px)";
